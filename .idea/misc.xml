@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Users/Usuario/Desktop/AppsMoviles/app/src/main/res/layout/activity_configuracion.xml" value="0.20153985507246377" />
         <entry key="..\:/Users/Usuario/Desktop/AppsMoviles/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Usuario/Desktop/AppsMoviles/app/src/main/res/layout/activity_recordatorios.xml" value="0.22" />
@@ -11,7 +12,11 @@
         <entry key="..\:/Users/chunc/Documents/Universidad/Proyecto final Aplicacion movil/AppsMoviles/app/src/main/res/layout/perfil_mascota.xml" value="0.1" />
         <entry key="..\:/Users/chunc/Documents/Universidad/Proyecto final Aplicacion movil/AppsMoviles/app/src/main/res/layout/perfil_mascotas.xml" value="0.22" />
         <entry key="..\:/Users/chunc/Documents/Universidad/Proyecto final Aplicacion movil/AppsMoviles/app/src/main/res/layout/vista_principal.xml" value="0.1" />
+=======
+>>>>>>> c17e485ceba86de84292652aedb944b219fade03
         <entry key="..\:/Users/samot/AndroidStudioProjects/AppsMoviles/app/src/main/res/layout/activity_main.xml" value="0.1265625" />
+        <entry key="..\:/Users/samot/AndroidStudioProjects/AppsMoviles/app/src/main/res/layout/activity_recordatorios.xml" value="0.10536980749746708" />
+        <entry key="..\:/Users/samot/AndroidStudioProjects/AppsMoviles/app/src/main/res/layout/vista_principal.xml" value="0.11875" />
       </map>
     </option>
   </component>
