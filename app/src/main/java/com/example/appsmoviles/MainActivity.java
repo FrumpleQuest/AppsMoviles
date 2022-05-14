@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteDatabase db = usdbh.getWritableDatabase();
 
+
+
         siguiente=(Button)findViewById(R.id.siguiente);
         siguiente.setOnClickListener(new View.OnClickListener() {
             @Override
