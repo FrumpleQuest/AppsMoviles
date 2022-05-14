@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.perfil_mascotas);
 
-        //Abrimos la base de datos 'DBUsuarios' en modo escritura
+       /* //Abrimos la base de datos 'DBUsuarios' en modo escritura
         SQLiteHelper usdbh =
                 new SQLiteHelper(this, "DBUsuarios", null, 1);
 
@@ -50,6 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent z = new Intent( MainActivity.this, archivos.class);
                 startActivity(z);
             }
-        });
+        });*/
     }
 }
