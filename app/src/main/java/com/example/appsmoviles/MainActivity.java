@@ -12,7 +12,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    //HOLA SOY EL TON
     Button siguiente, configuracion, archivos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         //Abrimos la base de datos 'DBUsuarios' en modo escritura
         SQLiteHelper usdbh =
                 new SQLiteHelper(this, "DBUsuarios", null, 1);
-
         SQLiteDatabase db = usdbh.getWritableDatabase();
 
 
