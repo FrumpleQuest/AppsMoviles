@@ -18,12 +18,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_mascotas);
 
-       /* //Abrimos la base de datos 'DBUsuarios' en modo escritura
+        //Abrimos la base de datos 'DBUsuarios' en modo escritura
         SQLiteHelper usdbh =
                 new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
 
-
+        /*
 
         siguiente=(Button)findViewById(R.id.siguiente);
         siguiente.setOnClickListener(new View.OnClickListener() {
