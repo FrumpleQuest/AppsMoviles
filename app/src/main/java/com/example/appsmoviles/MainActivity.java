@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.perfil_mascotas);
 
         //loadData();
-
+/*Linea del Eric
         tv1 = (TextView)findViewById(R.id.tv1);
         rv1 = (ListView)findViewById(R.id.rv1);
 
 
         ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_recordatorio, recordatorios);
         rv1.setAdapter(adapter);
-
+*/
 
 
 
