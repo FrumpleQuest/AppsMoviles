@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,19 +25,21 @@ public class MainActivity extends AppCompatActivity {
     TextView tv1;
     ListView rv1;
 
+    //Recordatorios base sin acceso a BD
     String recordatorios [] = {"Lunes 3, Llevar al veterinario", "Lunes 10, poner vacuna", "Lunes 17, Esterilizar"};
-
-
-
-
 
     //Arreglo para crear los perfiles
     ListView lst;
-    String[] Name={"Don Gato","Mako"};
-    String[] Especie = {"Gato","Gato"};
-    String[] Edad = {"5 años","11 años"};
-    String[] Sexo = {"Macho","Hembra"};
-    String[] Estirilizado = {"Si","Si"};
+    String[][] a =
+    {
+            {"Don Gato","Mako"},
+            {"Gato","Gato"},
+            {"Ayer","Ayer"},
+            {"Gata Chica","Gata Chica"},
+            {"Macho","Hembra"},
+            {"Si","Si"}
+    };
+    //Esta imagen esta hardcodeada, debería estar en la BD y ser accedida
     Integer[] imgid = {R.drawable.iconopatita,R.drawable.iconopatita};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +56,43 @@ public class MainActivity extends AppCompatActivity {
         rv1.setAdapter(adapter);
 */
 
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
+        SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
+        SQLiteDatabase db = usdbh.getWritableDatabase();
+        //Obtenemos los elementos para la listview (por ahora solo hay uno, falta iterar el cursor)
+        Cursor cursorMascotas = db.rawQuery("SELECT * FROM Mascotas",null);
+        cursorMascotas.moveToFirst();
+
+        int i = 0;
+        while(i < 6){
+            a[i][0] = cursorMascotas.getString(i+1);
+            a[i][1] = cursorMascotas.getString(i+1);
+            i++;
+        }
+
+        i = 0;
+        while(i < 6){
+            Log.d("HOLA",cursorMascotas.getString(i+1));
+            i++;
+        }
+
+
+
 
 
         //Acá estoy probando la list View
         lst=(ListView) findViewById(R.id.mylistview);//lo estoy haciendo diferente al profe, realizando un casteo
-        PerfilClass perfilClass = new PerfilClass(this,Name,Especie,Edad,Sexo,Estirilizado,imgid);
+        PerfilClass perfilClass = new PerfilClass(this,a[0],a[1],a[2],a[3],a[4],imgid);
         lst.setAdapter(perfilClass);
-        //Abrimos la base de datos 'DBUsuarios' en modo escritura
-        SQLiteHelper usdbh =
-                new SQLiteHelper(this, "DBUsuarios", null, 1);
-        SQLiteDatabase db = usdbh.getWritableDatabase();
+
+
+
+
+
+
+
+
+
 
         /*
 
