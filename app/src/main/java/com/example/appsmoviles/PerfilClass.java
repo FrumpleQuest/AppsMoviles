@@ -1,7 +1,7 @@
 package com.example.appsmoviles;
 
 import android.app.Activity;
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -22,9 +21,11 @@ public class PerfilClass extends ArrayAdapter<String>{
     private String[] Estirilizado;
     private Integer[] imgid;
     private Activity context;
+    public final static String LOGTAG ="Hola Logs";
     public PerfilClass(Activity context,String [] Name, String[] Especie, String[] Edad, String[] Sexo, String[] Estirilizado, Integer[] imgid) {
-        super(context, R.layout.item_listview,Name);
 
+        super(context, R.layout.item_listview,Name);
+        Log.i(LOGTAG, "Se muestra la vista");
         this.context= context;
         this.Name=Name;
         this.Especie=Especie;

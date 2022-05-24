@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button siguiente, configuracion, archivos;
+    ImageButton recordatorio,configuracion;
 
     TextView tv1;
     ListView rv1;
@@ -32,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
     //Arreglo para crear los perfiles
     ListView lst;
-    String[] Name={"Don Gato","Mako"};
-    String[] Especie = {"Gato","Gato"};
-    String[] Edad = {"5 años","11 años"};
-    String[] Sexo = {"Macho","Hembra"};
-    String[] Estirilizado = {"Si","Si"};
+    String[] Name={"Don Gato"};
+    String[] Especie = {"Gato"};
+    String[] Edad = {"5 años"};
+    String[] Sexo = {"Macho"};
+    String[] Estirilizado = {"Si"};
     Integer[] imgid = {R.drawable.iconopatita,R.drawable.iconopatita};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
         SQLiteHelper usdbh =
                 new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
+
+        recordatorio= (ImageButton) findViewById(R.id.recordatorio);
+        recordatorio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( MainActivity.this, recordatorios.class);
+                startActivity(i);
+            }
+        });
 
         /*
 
