@@ -16,13 +16,12 @@
             android:id="@+id/foto_perfil"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="20sp"
             android:layout_weight="1"/>
         <TextView
             android:id="@+id/Nombre"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:textAlignment="center"
             android:textColor="#5b1a04"
             />

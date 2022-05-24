@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button siguiente, configuracion, archivos;
+    ImageButton recordatorio,configuracion;
 
     TextView tv1;
     ListView rv1;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             {"Si","Si"}
     };
     //Esta imagen esta hardcodeada, debería estar en la BD y ser accedida
+
     Integer[] imgid = {R.drawable.iconopatita,R.drawable.iconopatita};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+        recordatorio= (ImageButton) findViewById(R.id.recordatorio);
+        recordatorio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( MainActivity.this, recordatorios.class);
+                startActivity(i);
+            }
+        });
 
         /*
 
