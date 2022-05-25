@@ -12,8 +12,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.LinkedList;
+
 public class PerfilClass extends ArrayAdapter<String>{
     //creamos un constructor
+    private LinkedList Mascota;
     private String [] Name;
     private String[] Especie;
     private String[] Edad;
@@ -22,11 +25,14 @@ public class PerfilClass extends ArrayAdapter<String>{
     private Integer[] imgid;
     private Activity context;
     public final static String LOGTAG ="Hola Logs";
-    public PerfilClass(Activity context,String [] Name, String[] Especie, String[] Edad, String[] Sexo, String[] Estirilizado, Integer[] imgid) {
+    public PerfilClass(Activity context,LinkedList Mascota, String [] Name, String[] Especie, String[] Edad, String[] Sexo, String[] Estirilizado, Integer[] imgid) {
 
         super(context, R.layout.item_listview,Name);
         Log.i(LOGTAG, "Se muestra la vista");
         this.context= context;
+
+        this.Mascota = Mascota;
+
         this.Name=Name;
         this.Especie=Especie;
         this.Edad=Edad;
