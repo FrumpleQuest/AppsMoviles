@@ -1,7 +1,10 @@
 package com.example.appsmoviles;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,7 +20,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,30 +68,46 @@ public class MainActivity extends AppCompatActivity {
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
+
         //Obtenemos los elementos para la listview (por ahora solo hay uno, falta iterar el cursor)
         Cursor cursorMascotas = db.rawQuery("SELECT * FROM Mascotas",null);
+        String[] atributos = {"Nombre","Especie","Sexo","FechaNacimiento","Raza","Esterilizado"};
+        LinkedList Mascotas = new LinkedList();
+
         cursorMascotas.moveToFirst();
 
+        //Mandamos una mascota a perfilclass
+        LinkedList pet = new LinkedList();
         int i = 0;
         while(i < 6){
-            a[i][0] = cursorMascotas.getString(i+1);
-            a[i][1] = cursorMascotas.getString(i+1);
+            pet.addLast(cursorMascotas.getString(i+1));
+            a[i][0] = cursorMascotas.getString(i+1);//Legacy
             i++;
         }
 
-        i = 0;
-        while(i < 6){
-            Log.d("HOLA",cursorMascotas.getString(i+1));
-            i++;
-        }
+        /* Esto es para mandar a todas las mascotas a perfilclass en un futuro
+        boolean flag = true;
+        while(flag){
+            ContentValues pet = new ContentValues(6);
+            int i = 0;
+            while(i < 6){
+                pet.put(atributos[i],cursorMascotas.getString(i+1));
+                a[i][0] = cursorMascotas.getString(i+1);//Legacy
+                i++;
+            }
+            Mascotas.add(pet);
+            if(cursorMascotas.isLast()) flag = false;
+            else cursorMascotas.moveToNext();
+        } */
 
 
 
 
 
-        //Acá estoy probando la list View
+
+        //Aqui le pasamos las mascotas a PerfilClass
         lst=(ListView) findViewById(R.id.mylistview);//lo estoy haciendo diferente al profe, realizando un casteo
-        PerfilClass perfilClass = new PerfilClass(this,a[0],a[1],a[2],a[3],a[4],imgid);
+        PerfilClass perfilClass = new PerfilClass(this,pet,a[0],a[1],a[2],a[3],a[4],imgid);
         lst.setAdapter(perfilClass);
 
 

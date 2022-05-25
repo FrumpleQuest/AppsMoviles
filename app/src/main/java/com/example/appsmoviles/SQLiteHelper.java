@@ -53,12 +53,21 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         //Insertamos a la Mako
         ContentValues mako = new ContentValues(6);
         mako.put("Nombre", "Mako");
-        mako.put("Especie", "GataMala");
+        mako.put("Especie", "Gata Mala");
         mako.put("Sexo", "Hembra");
-        mako.put("FechaNacimiento", "Ayer");
+        mako.put("FechaNacimiento", "2012-12-15");
         mako.put("Raza", "GataPeliCorta");
         mako.put("Esterilizado", 1);
         db.insert("Mascotas",null, mako);
+        //Insertamos al don Gato
+        ContentValues donGato = new ContentValues(6);
+        mako.put("Nombre", "Don Gato");
+        mako.put("Especie", "Gato Bueno");
+        mako.put("Sexo", "Macho");
+        mako.put("FechaNacimiento", "2017-01-03");
+        mako.put("Raza", "GatoPeliLargo");
+        mako.put("Esterilizado", 0);
+        db.insert("Mascotas",null, donGato);
 
         ContentValues recordatorio = new ContentValues(4);
         recordatorio.put("ID_Mascota",1);
@@ -89,6 +98,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db){
         Log.d("CreadaDB","Base de Datos Creada");
 
+        //Creamos las tablas de la BD
         db.execSQL(sqlCreateMascotas);
         db.execSQL(sqlCreateCategorias);
         db.execSQL(sqlCreateArchivos);
@@ -101,7 +111,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         Cursor makotestcursor = db.rawQuery("SELECT * FROM Mascotas",null);
         makotestcursor.moveToFirst();
         Log.d("CreadaDB", makotestcursor.getString(1));
-        //--------------------------------------------------------------------------------------
+
         Cursor rectestcursor= db.rawQuery("SELECT * FROM Recordatorios",null);
         rectestcursor.moveToFirst();
         Log.d("CreadaDB", rectestcursor.getString(2));
