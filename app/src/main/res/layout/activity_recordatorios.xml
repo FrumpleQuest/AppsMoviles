@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="@+id/imageButton6"
+        app:layout_constraintTop_toTopOf="@+id/recordatorios"
         app:srcCompat="@drawable/franja" />
 
     <ImageView
@@ -25,7 +25,7 @@
         app:srcCompat="@drawable/franja" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/recordatorios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="9dp"
@@ -45,8 +45,8 @@
         android:layout_marginEnd="28dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/imageButton8"
-        app:layout_constraintStart_toEndOf="@+id/imageButton6"
-        app:layout_constraintTop_toTopOf="@+id/imageButton6"
+        app:layout_constraintStart_toEndOf="@+id/recordatorios"
+        app:layout_constraintTop_toTopOf="@+id/recordatorios"
         app:srcCompat="@drawable/iconopatita"
         tools:ignore="SpeakableTextPresentCheck" />
 

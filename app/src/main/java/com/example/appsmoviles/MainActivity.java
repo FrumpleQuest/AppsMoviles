@@ -21,11 +21,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton recordatorio,configuracion;
-
     TextView tv1;
     ListView rv1;
 
-    String recordatorios [] = {"Lunes 3, Llevar al veterinario", "Lunes 10, poner vacuna", "Lunes 17, Esterilizar"};
+    String[] recordatorios = {"Lunes 3, Llevar al veterinario", "Lunes 10, poner vacuna", "Lunes 17, Esterilizar"};
 
 
 
