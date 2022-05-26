@@ -32,12 +32,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tv1;
     ListView rv1;
 
-<<<<<<< HEAD
     String[] recordatorios = {"Lunes 3, Llevar al veterinario", "Lunes 10, poner vacuna", "Lunes 17, Esterilizar"};
-=======
-    //Recordatorios base sin acceso a BD
-    String recordatorios [] = {"Lunes 3, Llevar al veterinario", "Lunes 10, poner vacuna", "Lunes 17, Esterilizar"};
->>>>>>> 2e35308796ad0614f83f0f5b244b2fd61f964c5a
+
 
     //Arreglo para crear los perfiles
     ListView lst;
