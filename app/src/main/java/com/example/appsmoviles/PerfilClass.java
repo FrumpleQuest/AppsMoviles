@@ -16,28 +16,29 @@ import java.util.LinkedList;
 
 public class PerfilClass extends ArrayAdapter<String>{
     //creamos un constructor
-    private LinkedList Mascota;
-    private String [] Name;
-    private String[] Especie;
-    private String[] Edad;
-    private String[] Sexo;
-    private String[] Estirilizado;
+    private LinkedList Nombres;
+    private LinkedList Especies;
+    private LinkedList Sexos;
+    private LinkedList Fechas;
+    private LinkedList Razas;
+    private LinkedList Esterilizados;
+
     private Integer[] imgid;
     private Activity context;
     public final static String LOGTAG ="Hola Logs";
-    public PerfilClass(Activity context,LinkedList Mascota, String [] Name, String[] Especie, String[] Edad, String[] Sexo, String[] Estirilizado, Integer[] imgid) {
+    public PerfilClass(Activity context,LinkedList Nombres,LinkedList Especies,LinkedList Sexos,LinkedList Fechas,LinkedList Razas,LinkedList Esterilizados, Integer[] imgid) {
 
-        super(context, R.layout.item_listview,Name);
+        super(context, R.layout.item_listview,Nombres);
         Log.i(LOGTAG, "Se muestra la vista");
         this.context= context;
 
-        this.Mascota = Mascota;
+        this.Nombres = Nombres;
+        this.Especies = Especies;
+        this.Sexos = Sexos;
+        this.Fechas = Fechas;
+        this.Razas = Razas;
+        this.Esterilizados = Esterilizados;
 
-        this.Name=Name;
-        this.Especie=Especie;
-        this.Edad=Edad;
-        this.Sexo=Sexo;
-        this.Estirilizado=Estirilizado;
         this.imgid=imgid;
     }
 
@@ -58,11 +59,11 @@ public class PerfilClass extends ArrayAdapter<String>{
             viewHolder= (ViewHolder) r.getTag();
         }
         viewHolder.perfil.setImageResource(imgid[position]);
-        viewHolder.tvw1.setText(Name[position]);
-        viewHolder.tvw2.setText(Especie[position]);
-        viewHolder.edad.setText(Edad[position]);
-        viewHolder.tvw3.setText(Sexo[position]);
-        viewHolder.tvw4.setText(Estirilizado[position]);
+        viewHolder.tvw1.setText((String) Nombres.get(position));
+        viewHolder.tvw2.setText((String) Especies.get(position));
+        viewHolder.edad.setText((String) Sexos.get(position));
+        viewHolder.tvw3.setText((String) Fechas.get(position));
+        viewHolder.tvw4.setText((String) Razas.get(position));
 
         return r;
     }
