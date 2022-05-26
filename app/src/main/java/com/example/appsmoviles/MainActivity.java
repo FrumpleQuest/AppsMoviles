@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
 
-        //Obtenemos los elementos para la listview (por ahora solo hay uno, falta iterar el cursor)
+        //Obtenemos los elementos para la listview
         Cursor cursorMascotas = db.rawQuery("SELECT * FROM Mascotas",null);
 
         //Creamos Listas de atributos de mascotas
