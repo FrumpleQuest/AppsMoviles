@@ -88,11 +88,13 @@
         android:id="@+id/tv1"
         android:layout_width="143dp"
         android:layout_height="25dp"
-        android:layout_marginStart="29dp"
+        android:layout_marginStart="132dp"
         android:text="Recordatorios"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView12"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView12" />
+        app:layout_constraintTop_toTopOf="@+id/imageView12"
+        app:layout_constraintVertical_bias="0.482" />
 
     <ListView
         android:id="@+id/rv1"
