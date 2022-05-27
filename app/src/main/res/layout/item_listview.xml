@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingTop="6dp">
+            android:padding="6dp">
             <ImageView
                 android:id="@+id/foto_perfil"
                 app:cardCornerRadius="100dp"
@@ -43,43 +43,107 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:padding="6dp"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/Especie"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/quicksand_bold"
                 android:layout_weight="1"
-                android:padding="1sp"/>
-            <TextView
-                android:id="@+id/Edad"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/quicksand_bold"
-                android:layout_weight="1"
-                android:padding="1sp"/>
-            <TextView
-                android:id="@+id/Sexo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/quicksand_bold"
-                android:layout_weight="1"
-                android:padding="1sp"/>
-            <TextView
-                android:id="@+id/Raza"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/quicksand_bold"
-                android:layout_weight="1"
-                android:padding="1sp"/>
-            <TextView
-                android:id="@+id/Estirilizado"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/quicksand_bold"
-                android:layout_weight="1"
-                android:padding="1sp"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Especie:"
+                    android:fontFamily="@font/quicksand_bold"/>
+                <TextView
+                    android:id="@+id/Especie"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:layout_weight="1"
+                    android:padding="1sp"/>
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Edad:"
+                    android:fontFamily="@font/quicksand_bold"
+                    />
+                <TextView
+                    android:id="@+id/Edad"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:layout_weight="1"
+                    android:padding="1sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Sexo:"
+                    android:fontFamily="@font/quicksand_bold"
+                    />
+
+                <TextView
+                    android:id="@+id/Sexo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:layout_weight="1"
+                    android:padding="1sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Raza:"
+                    android:fontFamily="@font/quicksand_bold"
+                    />
+
+                <TextView
+                    android:id="@+id/Raza"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:layout_weight="1"
+                    android:padding="1sp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:text="Esterilizado:"
+                    android:fontFamily="@font/quicksand_bold"
+                    />
+                <TextView
+                    android:id="@+id/Estirilizado"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:layout_weight="1"
+                    android:padding="1sp"/>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

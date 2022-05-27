@@ -9,7 +9,8 @@
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="65sp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
         android:background="#ff98ba">
         <TextView
             android:layout_width="match_parent"
@@ -23,12 +24,13 @@
     <ListView
         android:id="@+id/mylistview"
         android:layout_width="match_parent"
-        android:layout_height="595dp" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="match_parent"
         android:background="#ff98ba"
-        android:layout_weight="1">
+        android:layout_weight="4">
         <ImageButton
             android:id="@+id/recordatorio"
             android:layout_width="0dp"
