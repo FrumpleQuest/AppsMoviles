@@ -41,10 +41,12 @@ public class recordatorios extends AppCompatActivity {
         c.moveToFirst();
 
         //LLenamos la lista con la BD (Aqui habría que tener 3 listas para los 3 atributos)
-        LinkedList<String> Titulos = new LinkedList<String>();
+        LinkedList<String> TitulosFechas = new LinkedList<String>();
+        LinkedList<String> Subtitulos = new LinkedList<String>();
         boolean flag = true;
         while(flag){
-            Titulos.add(c.getString(2));
+            TitulosFechas.add(c.getString(2) + ", " + c.getString(4));
+            Subtitulos.add(c.getString(3));
             if (c.isLast()){
                 flag = false;
             }
@@ -56,7 +58,7 @@ public class recordatorios extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
-                Titulos
+                TitulosFechas
         );
 
         mylistview.setAdapter(adapter);
