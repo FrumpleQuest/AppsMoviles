@@ -61,9 +61,10 @@ public class PerfilClass extends ArrayAdapter<String>{
         viewHolder.perfil.setImageResource(imgid[position]);
         viewHolder.tvw1.setText((String) Nombres.get(position));
         viewHolder.tvw2.setText((String) Especies.get(position));
-        viewHolder.edad.setText((String) Sexos.get(position));
-        viewHolder.tvw3.setText((String) Fechas.get(position));
-        viewHolder.tvw4.setText((String) Razas.get(position));
+        viewHolder.edad.setText((String) Fechas.get(position));
+        viewHolder.tvw3.setText((String) Sexos.get(position));
+        viewHolder.razas.setText((String) Razas.get(position));
+        viewHolder.tvw4.setText((String) Esterilizados.get(position));
 
         return r;
     }
@@ -75,6 +76,7 @@ public class PerfilClass extends ArrayAdapter<String>{
         TextView tvw3;
         TextView tvw4;
         ImageView perfil;
+        TextView razas;
         //creamos un constructor
         ViewHolder(View v){
             tvw1 = (TextView) v.findViewById(R.id.Nombre);
@@ -83,6 +85,7 @@ public class PerfilClass extends ArrayAdapter<String>{
             tvw3 = (TextView) v.findViewById(R.id.Sexo);
             tvw4 = (TextView) v.findViewById(R.id.Estirilizado);
             perfil = (ImageView) v.findViewById(R.id.foto_perfil);
+            razas = (TextView) v.findViewById(R.id.Raza);
         }
 
     }
