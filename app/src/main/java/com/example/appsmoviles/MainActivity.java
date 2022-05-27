@@ -19,6 +19,9 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -29,8 +32,11 @@ import java.util.ListIterator;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton recordatorio,configuracion;
+    //FloatingActionButton Material Design;
+    FloatingActionButton plus_Button;
     TextView tv1;
     ListView rv1;
+    public final static String LOGTAG = "HolaLogs";
 
     String[] recordatorios = {"Lunes 3, Llevar al veterinario", "Lunes 10, poner vacuna", "Lunes 17, Esterilizar"};
 
@@ -102,12 +108,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
         recordatorio= (ImageButton) findViewById(R.id.recordatorio);
         recordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +116,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        FloatingActionButton fab = findViewById(R.id.floating_action_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( MainActivity.this, PetAdd.class);
+                startActivity(i);
+            }
+        });
+
 
         /*
 
