@@ -6,4 +6,4 @@
     android:layout_height="wrap_content"
     android:background="#ff98ba"
     android:padding="10sp"
-    android:textSize="40sp" />
+    android:textSize="90sp" />
