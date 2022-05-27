@@ -16,35 +16,57 @@
             android:layout_height="match_parent"
             android:textColor="#5b1a04"
             android:text="Mascotas"
+            android:fontFamily="@font/quicksand_bold"
             android:textSize="30sp"
             android:gravity="center"/>
     </LinearLayout>
     <ListView
         android:id="@+id/mylistview"
         android:layout_width="match_parent"
-        android:layout_height="400sp" />
+        android:layout_height="595dp" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="65sp"
-        android:background="#ff98ba">
+        android:layout_height="70dp"
+        android:background="#ff98ba"
+        android:layout_weight="1">
         <ImageButton
             android:id="@+id/recordatorio"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:layout_weight="1"
+            android:background="#ff98ba"
+            android:src="@drawable/calendar"/>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:adjustViewBounds="true"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"
             android:src="@drawable/iconopatita"/>
         <ImageButton
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="0dp"
+            android:adjustViewBounds="true"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"
-            android:src="@drawable/iconopatita"/>
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#ff98ba"
-            android:src="@drawable/iconopatita"/>
+            android:src="@drawable/setting"/>
     </LinearLayout>
 </LinearLayout>

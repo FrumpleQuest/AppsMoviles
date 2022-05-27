@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
     ListView lst;
     String[][] a =
     {
-            {"Don Gato","Mako"},
-            {"Gato","Gato"},
-            {"Ayer","Mañana"},
-            {"Gata Chica","Gata Chica"},
+            {"Don Gato","Mako"},//nombre
+            {"Gato","Gato"},//especie
+            {"Ayer","Mañana"},//fecha de nacimiento
+            {"Gata Chica","Gata Chica"}, //
             {"Macho","Hembra"},
             {"Si","Si"}
     };
