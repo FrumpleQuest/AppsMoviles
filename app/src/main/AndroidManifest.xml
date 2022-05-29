@@ -18,6 +18,8 @@
         <activity
             android:name=".recordatorios"
             android:exported="false" />
+        <activity android:name=".PetAdd"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -7,4 +7,11 @@
     <string name="sexo">Sexo</string>
     <string name="fecha_de_nacimiento">Fecha de Nacimiento</string>
     <string name="mascotas">Mascotas</string>
+    <string name="Especie">Especie</string>
+    <string name="Raza">Raza</string>
+    <string name="Ingrese_Raza">Ingrese Raza</string>
+    <string name="Color">Color</string>
+    <string name="Ingrese_Color">Ingrese Color</string>
+    <string name="Observaciones">Observaciones</string>
+    <string name="extended_fab_label">Agregar</string>
 </resources>
