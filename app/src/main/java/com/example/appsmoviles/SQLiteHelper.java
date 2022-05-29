@@ -69,12 +69,27 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         donGato.put("Esterilizado", 0);
         db.insert("Mascotas",null, donGato);
 
+        //Creamos 3 recordatorios para la demostración :)
         ContentValues recordatorio = new ContentValues(4);
         recordatorio.put("ID_Mascota",1);
-        recordatorio.put("Titulo", "Mako Vacuna :D");
+        recordatorio.put("Titulo", "Mako: Vacuna");
         recordatorio.put("Subtitulo", "Subtitulo: Triple Felina");
         recordatorio.put("Fecha","2022-08-01");
         db.insert("Recordatorios",null, recordatorio);
+
+        ContentValues recordatorio2 = new ContentValues(4);
+        recordatorio2.put("ID_Mascota",2);
+        recordatorio2.put("Titulo", "Don Gato: Veterinario");
+        recordatorio2.put("Subtitulo", "Subtitulo: Hospital Veterinario Valparaiso");
+        recordatorio2.put("Fecha","2022-09-15");
+        db.insert("Recordatorios",null, recordatorio2);
+
+        ContentValues recordatorio3 = new ContentValues(4);
+        recordatorio3.put("ID_Mascota",2);
+        recordatorio3.put("Titulo", "Don Gato: Comprar Comida");
+        recordatorio3.put("Subtitulo", "Subtitulo: Nutragold");
+        recordatorio3.put("Fecha","2022-06-02");
+        db.insert("Recordatorios",null, recordatorio3);
 
         ContentValues makoPeso = new ContentValues(4);
         makoPeso.put("ID_Mascota", 1);
@@ -116,6 +131,10 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
         Cursor rectestcursor= db.rawQuery("SELECT * FROM Recordatorios",null);
         rectestcursor.moveToFirst();
+        Log.d("CreadaDB", rectestcursor.getString(2));
+        rectestcursor.moveToNext();
+        Log.d("CreadaDB", rectestcursor.getString(2));
+        rectestcursor.moveToNext();
         Log.d("CreadaDB", rectestcursor.getString(2));
 
         Cursor Pesotestcursor= db.rawQuery("SELECT * FROM Categorias",null);

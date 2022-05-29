@@ -36,28 +36,16 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton plus_Button;
     TextView tv1;
     ListView rv1;
-    public final static String LOGTAG = "HolaLogs";
 
     //Arreglo para crear los perfiles
     ListView lst;
-    String[][] a =
-    {
-            {"Don Gato","Mako"},//nombre
-            {"Gato","Gato"},//especie
-            {"Ayer","Mañana"},//fecha de nacimiento
-            {"Gata Chica","Gata Chica"}, //
-            {"Macho","Hembra"},
-            {"Si","Si"}
-    };
-    //Esta imagen esta hardcodeada, debería estar en la BD y ser accedida
 
+    //Esta imagen esta hardcodeada, debería estar en la BD y ser accedida
     Integer[] imgid = {R.drawable.iconopatita,R.drawable.iconopatita};
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.perfil_mascotas);
-
-
+    public void onResume(){
+        super.onResume();
+        Log.d("Resumido","Resumido be like");
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
@@ -89,10 +77,20 @@ public class MainActivity extends AppCompatActivity {
             cursorMascotas.moveToNext();
         }
 
+
         //Aqui le pasamos las mascotas a PerfilClass
         lst=(ListView) findViewById(R.id.mylistview);//lo estoy haciendo diferente al profe, realizando un casteo
         PerfilClass perfilClass = new PerfilClass(this,Nombres,Especies,Sexos,Fechas,Razas,Esterilizados,imgid);
         lst.setAdapter(perfilClass);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.perfil_mascotas);
+
+
+
 
 
 
@@ -145,4 +143,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
     }
+
 }
