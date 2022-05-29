@@ -1,27 +1,19 @@
 package com.example.appsmoviles;
-
-
-import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -69,29 +61,17 @@ public class recordatorios extends AppCompatActivity {
             resultMap.put("second", pair.getValue().toString());
             lisitems.add(resultMap);
         }
-
-        /*
-        LinkedList<String> TitulosFechas = new LinkedList<String>();
-        LinkedList<String> Subtitulos = new LinkedList<String>();
-        boolean flag = true;
-        while(flag){
-            TitulosFechas.add(c.getString(2) + ", " + c.getString(4));
-            Subtitulos.add(c.getString(3));
-            if (c.isLast()){
-                flag = false;
-            }
-            c.moveToNext();
-        }
-
-        //Accedemos al listview
-        mylistview = (ListView) findViewById(R.id.rv1);
-        ArrayAdapter adapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                TitulosFechas
-        );
-*/
         mylistview.setAdapter(adapter);
+
+        FloatingActionButton fab1 = findViewById(R.id.floating_action_button_2);
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( recordatorios.this, RecordatorioAdd.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 }
