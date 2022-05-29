@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -26,6 +27,8 @@ public class recordatorios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recordatorios);
         mylistview = (ListView) findViewById(R.id.rv1);
+
+        ImageButton Initial;
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
@@ -62,6 +65,15 @@ public class recordatorios extends AppCompatActivity {
             lisitems.add(resultMap);
         }
         mylistview.setAdapter(adapter);
+
+        Initial = (ImageButton) findViewById(R.id.principal_layout);
+        Initial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(recordatorios.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         FloatingActionButton fab1 = findViewById(R.id.floating_action_button_2);
         fab1.setOnClickListener(new View.OnClickListener() {
