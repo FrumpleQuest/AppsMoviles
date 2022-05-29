@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
     ListView rv1;
     public final static String LOGTAG = "HolaLogs";
 
-    String[] recordatorios = {"Lunes 3, Llevar al veterinario", "Lunes 10, poner vacuna", "Lunes 17, Esterilizar"};
-
     //Arreglo para crear los perfiles
     ListView lst;
     String[][] a =
@@ -59,15 +57,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_mascotas);
 
-        //loadData();
-        /*Linea del Eric
-        tv1 = (TextView)findViewById(R.id.tv1);
-        rv1 = (ListView)findViewById(R.id.rv1);
-
-
-        ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_recordatorio, recordatorios);
-        rv1.setAdapter(adapter);
-        */
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
