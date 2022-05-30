@@ -37,6 +37,7 @@
                         android:layout_height="80dp"
                         app:cardCornerRadius="43dp"
                         android:layout_gravity="center">
+                        <!--Estos valores son arbitrarios-->
                         <ImageView
                             android:id="@+id/foto_perfil"
                             android:layout_width="match_parent"
