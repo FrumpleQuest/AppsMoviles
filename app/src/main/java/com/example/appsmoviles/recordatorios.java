@@ -23,9 +23,8 @@ public class recordatorios extends AppCompatActivity {
     ListView mylistview;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recordatorios);
+    public void onResume(){
+        super.onResume();
         mylistview = (ListView) findViewById(R.id.rv1);
 
         ImageButton Initial;
@@ -83,6 +82,14 @@ public class recordatorios extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recordatorios);
+
 
 
     }
