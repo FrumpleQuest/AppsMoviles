@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     ListView lst;
 
     //Esta imagen esta hardcodeada, debería estar en la BD y ser accedida
-    Integer[] imgid = {R.drawable.iconopatita,R.drawable.iconopatita};
+    Integer[] imgid = {R.drawable.makoimg,R.drawable.iconopatita};
     @Override
     public void onResume(){
         super.onResume();
