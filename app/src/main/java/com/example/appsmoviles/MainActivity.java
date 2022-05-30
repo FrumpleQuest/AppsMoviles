@@ -111,36 +111,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
-        /*
-
-        siguiente=(Button)findViewById(R.id.siguiente);
-        siguiente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent( MainActivity.this, recordatorios.class);
-                startActivity(i);
-            }
-        });
-
-        configuracion=(Button)findViewById(R.id.configuracion);
-        configuracion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent j = new Intent( MainActivity.this, configuracion.class);
-                startActivity(j);
-            }
-        });
-
-        archivos=(Button)findViewById(R.id.archivos);
-        archivos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent z = new Intent( MainActivity.this, archivos.class);
-                startActivity(z);
-            }
-        });*/
     }
 
 }
