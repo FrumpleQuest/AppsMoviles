@@ -94,6 +94,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        configuracion= (ImageButton) findViewById(R.id.configuracion);
+        configuracion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( MainActivity.this, configuracion.class);
+                startActivity(i);
+            }
+        });
+
         FloatingActionButton fab = findViewById(R.id.floating_action_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

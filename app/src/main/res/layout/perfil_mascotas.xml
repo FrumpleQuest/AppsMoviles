@@ -73,6 +73,7 @@
             android:background="#ff98ba"
             android:src="@drawable/huella"/>
         <ImageButton
+            android:id="@+id/configuracion"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
