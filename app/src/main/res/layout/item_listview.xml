@@ -10,153 +10,169 @@
     android:background="#fbfbf6"
     android:orientation="vertical"
     >
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="6dp"
-        android:animateLayoutChanges="true"
-        >
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="6dp">
-            <androidx.cardview.widget.CardView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingLeft="10dp"
-                app:cardCornerRadius="250dp"
-                android:layout_gravity="center">
-                <ImageView
-                    android:id="@+id/foto_perfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"/>
-
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:id="@+id/Nombre"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/quicksand_bold"
-                android:textAlignment="center"
-                android:textColor="#5b1a04"
-                android:padding="10dp"
-                android:textSize="25sp"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:orientation="vertical"
             android:padding="6dp"
-            android:orientation="vertical">
+            android:animateLayoutChanges="true"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
+                android:padding="6dp">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="150dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:text="Especie:"
-                    android:fontFamily="@font/quicksand_bold"/>
-                <TextView
-                    android:id="@+id/Especie"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/quicksand_bold"
                     android:layout_weight="1"
-                    android:padding="1sp"/>
+                    android:paddingLeft="10dp"
+                    app:cardCornerRadius="250dp"
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:id="@+id/foto_perfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"/>
+
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/Nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textAlignment="center"
+                    android:textColor="#5b1a04"
+                    android:padding="10dp"
+                    android:textSize="25sp"
+                    />
 
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-                <TextView
+                android:layout_weight="1"
+                android:padding="6dp"
+                android:orientation="vertical">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:text="Nacimiento:"
-                    android:fontFamily="@font/quicksand_bold"
-                    />
-                <TextView
-                    android:id="@+id/Edad"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/quicksand_bold"
                     android:layout_weight="1"
-                    android:padding="1sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="7"
-                    android:text="Sexo:"
-                    android:fontFamily="@font/quicksand_bold"
-                    />
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:text="Especie:"
+                        android:fontFamily="@font/quicksand_bold"/>
+                    <TextView
+                        android:id="@+id/Especie"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:layout_weight="1"
+                        android:padding="1sp"/>
 
-                <TextView
-                    android:id="@+id/Sexo"
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:layout_weight="1"
-                    android:padding="1sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <TextView
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:text="Nacimiento:"
+                        android:fontFamily="@font/quicksand_bold"
+                        />
+                    <TextView
+                        android:id="@+id/Edad"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:layout_weight="1"
+                        android:padding="1sp"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="7"
-                    android:text="Raza:"
-                    android:fontFamily="@font/quicksand_bold"
-                    />
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:text="Sexo:"
+                        android:fontFamily="@font/quicksand_bold"
+                        />
 
-                <TextView
-                    android:id="@+id/Raza"
+                    <TextView
+                        android:id="@+id/Sexo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:layout_weight="1"
+                        android:padding="1sp"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:layout_weight="1"
-                    android:padding="1sp"/>
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:text="Raza:"
+                        android:fontFamily="@font/quicksand_bold"
+                        />
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-                <TextView
+                    <TextView
+                        android:id="@+id/Raza"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:layout_weight="1"
+                        android:padding="1sp"/>
+
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:text="Esterilizado:"
-                    android:fontFamily="@font/quicksand_bold"
-                    />
-                <TextView
-                    android:id="@+id/Estirilizado"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:layout_weight="1"
-                    android:padding="1sp"/>
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:text="Esterilizado:"
+                        android:fontFamily="@font/quicksand_bold"
+                        />
+                    <TextView
+                        android:id="@+id/Estirilizado"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:layout_weight="1"
+                        android:padding="1sp"/>
+                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="end"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/pencil_icon"
+            app:backgroundTint="#f85f6a"
+            android:contentDescription="TODO" />
 
-    </LinearLayout>
+    </FrameLayout>
+
     <!--
     <LinearLayout
         android:layout_width="match_parent"
