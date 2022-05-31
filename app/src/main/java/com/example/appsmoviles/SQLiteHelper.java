@@ -9,8 +9,6 @@ import android.util.Log;
 
 public class SQLiteHelper extends SQLiteOpenHelper{
 
-
-    //Aqui faltan los CREATE de las otras tablas
     String sqlCreateMascotas = "CREATE TABLE Mascotas " +
             "(ID_Mascota INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "Nombre TEXT, " +

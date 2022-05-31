@@ -51,7 +51,7 @@
                             android:fontFamily="@font/quicksand_bold"
                             android:text="@string/nombre"/>
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/outlinedTextField"
+                            android:id="@+id/text_add_pet"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
@@ -78,7 +78,7 @@
                             android:fontFamily="@font/quicksand_bold"
                             />
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/outlinedTextField2"
+                            android:id="@+id/text_add_especie"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
@@ -103,7 +103,7 @@
                             android:fontFamily="@font/quicksand_bold"
                             android:layout_weight="5"/>
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/Fecha_Nacimiento"
+                            android:id="@+id/text_add_sexo"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -128,7 +128,7 @@
                             android:fontFamily="@font/quicksand_bold"
                             android:text="@string/fecha_de_nacimiento"/>
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/outlinedTextField3"
+                            android:id="@+id/text_add_fecha"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -153,7 +153,7 @@
                             android:fontFamily="@font/quicksand_bold"
                             android:text="@string/Raza"/>
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/RazaAdd"
+                            android:id="@+id/text_add_raza"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -178,7 +178,7 @@
                             android:fontFamily="@font/quicksand_bold"
                             android:text="@string/Color"/>
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/ColorAdd"
+                            android:id="@+id/text_add_color"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -203,7 +203,7 @@
                             android:fontFamily="@font/quicksand_bold"
                             android:text="@string/Observaciones"/>
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/ObservationAdd"
+                            android:id="@+id/text_add_obs"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -220,7 +220,7 @@
             </ScrollView>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/extended_fab"
+            android:id="@+id/boton_add_pet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
