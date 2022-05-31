@@ -96,7 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Sonido de notificaciones"
+                    android:text="Modo oscuro"
                     android:fontFamily="@font/quicksand_bold"
                     android:textColor="#5b1a04"
                     app:layout_constraintTop_toTopOf="parent"
