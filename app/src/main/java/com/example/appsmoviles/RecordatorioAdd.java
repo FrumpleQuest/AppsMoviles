@@ -65,19 +65,30 @@ public class RecordatorioAdd extends AppCompatActivity {
         });
 
         //-----------------------------Codigo duplicado-----------------------------------
-        record1= (ImageButton) findViewById(R.id.recordatorio);
-        record1.setOnClickListener(new View.OnClickListener() {
+        //Codigo duplicado
+        ImageButton recordatorio= (ImageButton) findViewById(R.id.recordatorio);
+        recordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent( RecordatorioAdd.this, recordatorios.class);
                 startActivity(i);
             }
         });
-        Initial = (ImageButton) findViewById(R.id.principal_layout);
-        Initial.setOnClickListener(new View.OnClickListener() {
+
+        ImageButton configuracion= (ImageButton) findViewById(R.id.configuracion);
+        configuracion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(RecordatorioAdd.this, MainActivity.class);
+                Intent i = new Intent( RecordatorioAdd.this, configuracion.class);
+                startActivity(i);
+            }
+        });
+
+        ImageButton boton_main= (ImageButton) findViewById(R.id.main_boton);
+        boton_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( RecordatorioAdd.this, MainActivity.class);
                 startActivity(i);
             }
         });

@@ -65,7 +65,7 @@ tools:context=".MainActivity">
         android:background="#ff98ba"
         android:src="@drawable/calendar"/>
     <ImageButton
-        android:id="@+id/principal_layout"
+        android:id="@+id/main_boton"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="5dp"
@@ -79,6 +79,7 @@ tools:context=".MainActivity">
         android:background="#ff98ba"
         android:src="@drawable/huella"/>
     <ImageButton
+        android:id="@+id/configuracion"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="5dp"

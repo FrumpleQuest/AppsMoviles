@@ -21,7 +21,7 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton recordatorio,configuracion;
+    ImageButton recordatorio,configuracion,boton_main;
     //FloatingActionButton Material Design;
     FloatingActionButton plus_Button;
     TextView tv1;
@@ -79,10 +79,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_mascotas);
 
-
-
-
-
         recordatorio= (ImageButton) findViewById(R.id.recordatorio);
         recordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +94,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent( MainActivity.this, configuracion.class);
                 startActivity(i);
+            }
+        });
+
+        boton_main= (ImageButton) findViewById(R.id.main_boton);
+        boton_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Aqui no se hace nada pq es el main
             }
         });
 

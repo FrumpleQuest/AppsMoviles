@@ -64,12 +64,29 @@ public class recordatorios extends AppCompatActivity {
             lisitems.add(resultMap);
         }
         mylistview.setAdapter(adapter);
-
-        Initial = (ImageButton) findViewById(R.id.principal_layout);
-        Initial.setOnClickListener(new View.OnClickListener() {
+        //Codigo duplicado
+        ImageButton recordatorio= (ImageButton) findViewById(R.id.recordatorio);
+        recordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(recordatorios.this, MainActivity.class);
+                //Aqui no hace nada pq estamos en recordatorios
+            }
+        });
+
+        ImageButton configuracion= (ImageButton) findViewById(R.id.configuracion);
+        configuracion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( recordatorios.this, configuracion.class);
+                startActivity(i);
+            }
+        });
+
+        ImageButton boton_main= (ImageButton) findViewById(R.id.main_boton);
+        boton_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( recordatorios.this, MainActivity.class);
                 startActivity(i);
             }
         });

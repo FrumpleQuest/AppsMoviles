@@ -61,7 +61,8 @@ public class PetAdd extends AppCompatActivity {
             }
         });
         //-----------------------------Codigo duplicado-----------------------------------
-        recordatorio= (ImageButton) findViewById(R.id.recordatorio);
+        //Codigo duplicado
+        ImageButton recordatorio= (ImageButton) findViewById(R.id.recordatorio);
         recordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,11 +70,21 @@ public class PetAdd extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        Initial = (ImageButton) findViewById(R.id.principal_layout);
-        Initial.setOnClickListener(new View.OnClickListener() {
+
+        ImageButton configuracion= (ImageButton) findViewById(R.id.configuracion);
+        configuracion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(PetAdd.this, MainActivity.class);
+                Intent i = new Intent( PetAdd.this, configuracion.class);
+                startActivity(i);
+            }
+        });
+
+        ImageButton boton_main= (ImageButton) findViewById(R.id.main_boton);
+        boton_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( PetAdd.this, MainActivity.class);
                 startActivity(i);
             }
         });
