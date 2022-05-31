@@ -52,7 +52,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="6"
                         android:fontFamily="@font/quicksand_bold"
-                        android:text="@string/ingresar_recordatorio"
+                        android:text="@string/ingrese_el_nombre_de_la_mascota"
                         android:textColor="#f85f6a" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -61,7 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
-                        android:hint="@string/ingresar_recordatorio">
+                        android:hint="@string/nombre">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -88,12 +88,14 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:hint="@string/ingresar_fecha">
+                        android:layout_weight="2">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            android:id="@+id/dateFormat"
+                            android:inputType="date"
+                            android:hint="@string/ingresar_fecha"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 

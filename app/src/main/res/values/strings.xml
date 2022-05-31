@@ -18,4 +18,5 @@
     <string name="ingresar_recordatorio">Ingresar Recordatorio</string>
     <string name="ingresar_fecha">Fecha</string>
     <string name="ingresar_subtitulo">Observaciones</string>
+    <string name="dateFormat">dateFormat</string>
 </resources>

@@ -1,10 +1,15 @@
 package com.example.appsmoviles;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,15 +17,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Calendar;
+
 public class RecordatorioAdd extends AppCompatActivity {
     ImageButton record1, Initial;
     ExtendedFloatingActionButton boton_agregar;
     TextInputLayout tv1,tv2,tv3;
     String text1,text2,text3;
+    EditText mDateFormat;
+    DatePickerDialog.OnDateSetListener onDateSetListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recordatorio_add);
+
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         boton_agregar = findViewById(R.id.extended_fab);
         boton_agregar.setOnClickListener(new View.OnClickListener() {
@@ -40,9 +54,9 @@ public class RecordatorioAdd extends AppCompatActivity {
                 ContentValues nuevorecordatorio = new ContentValues(4);
                 //ESTA ID MASCOTA DEBERÍA DEPENDER DE LA MASCOTA QUE PONES EN LA CREACION
                 nuevorecordatorio.put("ID_Mascota",1);
-                nuevorecordatorio.put("Titulo", "Mako: " + text1);
+                nuevorecordatorio.put("Titulo", "Mako: " + text1 );
                 nuevorecordatorio.put("Subtitulo", "Subtitulo: " + text3);
-                nuevorecordatorio.put("Fecha",text2);
+                nuevorecordatorio.put("Fecha",text2.replaceAll("/", "-"));
                 db.insert("Recordatorios",null, nuevorecordatorio);
 
                 Intent i = new Intent( RecordatorioAdd.this, recordatorios.class);
@@ -67,5 +81,26 @@ public class RecordatorioAdd extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        mDateFormat = findViewById(R.id.dateFormat);
+        mDateFormat.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        RecordatorioAdd.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        onDateSetListener, year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+        onDateSetListener  = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month+1;
+                String date = dayOfMonth+"/"+month+"/"+year;
+                mDateFormat.setText(date);
+            }
+        };
+
     }
 }
