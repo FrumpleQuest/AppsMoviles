@@ -83,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
         recordatorio= (ImageButton) findViewById(R.id.recordatorio);
         recordatorio.setOnClickListener(new View.OnClickListener() {
             @Override

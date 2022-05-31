@@ -72,7 +72,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:fontFamily="@font/quicksand_bold"
-                    android:text="Agregar mascota"
+                    android:text="Sonido de Notificaciones"
                     android:textColor="#5b1a04"/>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
