@@ -1,20 +1,26 @@
 package com.example.appsmoviles;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.LinkedList;
 
-public class PerfilClass extends ArrayAdapter<String>{
+public class PerfilClass extends ArrayAdapter<String> {
     //creamos un constructor
     private LinkedList Nombres;
     private LinkedList Especies;
@@ -40,6 +46,7 @@ public class PerfilClass extends ArrayAdapter<String>{
         this.Esterilizados = Esterilizados;
 
         this.imgid=imgid;
+
     }
 
     @NonNull
@@ -54,10 +61,26 @@ public class PerfilClass extends ArrayAdapter<String>{
             r = layoutInflater.inflate(R.layout.item_listview,null,true);
             viewHolder= new ViewHolder(r);
             r.setTag(viewHolder);
+            //------------
+
+            /*
+            FloatingActionButton Boton_Agregar = (FloatingActionButton) r.findViewById(R.id.floating_action_button_edit);
+            Boton_Agregar.setOnClickListener(new AdapterView.OnClickListener(){
+                @Override
+                public void onItemClick(View view){
+                    Intent i = new Intent(PerfilClass.this,PetAdd.class);
+                }
+            });*/
+            //-------------
         }
         else{
             viewHolder= (ViewHolder) r.getTag();
         }
+        //-----Probando el boton de agregar----
+
+
+        //-------------------------------------
+
         viewHolder.perfil.setImageResource(imgid[position]);
         viewHolder.tvw1.setText((String) Nombres.get(position));
         viewHolder.tvw2.setText((String) Especies.get(position));

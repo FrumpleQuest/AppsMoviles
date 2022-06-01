@@ -91,9 +91,9 @@
                         android:layout_weight="2">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/dateFormat"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/dateFormat"
                             android:inputType="date"
                             android:hint="@string/ingresar_fecha"/>
                     </com.google.android.material.textfield.TextInputLayout>

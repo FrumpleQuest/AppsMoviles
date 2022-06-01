@@ -1,33 +1,67 @@
 package com.example.appsmoviles;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 
 public class PetAdd extends AppCompatActivity {
     ImageButton recordatorio, Initial;
+    final Calendar myCalendar = Calendar.getInstance();
     ExtendedFloatingActionButton boton_agregar_pet;
     TextInputLayout tv1,tv2,tv3,tv4,tv5,tv6,tv7;
     String text1,text2,text3,text4,text5,text6,text7;
+    TextInputEditText editText;
+    //Se crean las variables
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pet_add);
+        //acá se agrega el calendario
+        editText=(TextInputEditText) findViewById(R.id.Fecha_Nacimiento_ADD);
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, month);
+                myCalendar.set(Calendar.DAY_OF_MONTH, day);
+                updateLabel();
+            }
+        };
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(PetAdd.this, date, myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
+            }
+        });
+
+
+
+
+        //---------------------------Hata acá lo de la base de datos--------------------------------------------------
         boton_agregar_pet = findViewById(R.id.boton_add_pet);
         boton_agregar_pet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Aqui almacenamos los valores en la BD
+
 
                 tv1 = findViewById(R.id.text_add_pet);
                 text1 = tv1.getEditText().getText().toString();
@@ -89,4 +123,11 @@ public class PetAdd extends AppCompatActivity {
             }
         });
     }
+    private void updateLabel(){
+        String myFormat= "MM/dd/yy";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
+        editText.setText(dateFormat.format(myCalendar.getTime()));
+    }
+
+
 }

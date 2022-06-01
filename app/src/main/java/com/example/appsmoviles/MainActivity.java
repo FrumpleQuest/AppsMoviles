@@ -10,11 +10,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.LinkedList;
@@ -31,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
     ListView lst;
 
     //Esta imagen esta hardcodeada, debería estar en la BD y ser accedida
-    Integer[] imgid = {R.drawable.makoimg,R.drawable.iconopatita,R.drawable.iconopatita};
+    Integer[] imgid = {R.drawable.makoimg,R.drawable.iconopatita,R.drawable.iconopatita,R.drawable.iconopatita,R.drawable.iconopatita,R.drawable.iconopatita,R.drawable.iconopatita
+            ,R.drawable.iconopatita,R.drawable.iconopatita,R.drawable.iconopatita,R.drawable.iconopatita,R.drawable.iconopatita,R.drawable.iconopatita
+            ,R.drawable.iconopatita,R.drawable.iconopatita,R.drawable.iconopatita,R.drawable.iconopatita};
     @Override
     public void onResume(){
         super.onResume();
@@ -71,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         lst=(ListView) findViewById(R.id.mylistview);//lo estoy haciendo diferente al profe, realizando un casteo
         PerfilClass perfilClass = new PerfilClass(this,Nombres,Especies,Sexos,Fechas,Razas,Esterilizados,imgid);
         lst.setAdapter(perfilClass);
+
+
     }
 
     @Override
@@ -104,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         FloatingActionButton fab = findViewById(R.id.floating_action_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +123,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        /*
+        FloatingActionButton Boton_Agregar = findViewById(R.id.floating_action_button_edit);
+        Boton_Agregar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent i = new Intent(MainActivity.this, EditPet.class);
+                startActivity(i);
+            }
+        });*/
     }
 
 }
