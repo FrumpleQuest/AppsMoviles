@@ -25,12 +25,61 @@ import java.util.Map;
 
 public class recordatorios extends AppCompatActivity {
 
-    ListView mylistview;
+
+
+
 
     @Override
     public void onResume(){
         super.onResume();
-        mylistview = (ListView) findViewById(R.id.rv1);
+        //Ahora crear la listview ocurre en una funcion aparte
+        crearListview();
+
+        //Codigo duplicado
+        ImageButton recordatorio= (ImageButton) findViewById(R.id.recordatorio);
+        recordatorio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Aqui no hace nada pq estamos en recordatorios
+            }
+        });
+
+        ImageButton configuracion= (ImageButton) findViewById(R.id.configuracion);
+        configuracion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( recordatorios.this, configuracion.class);
+                startActivity(i);
+            }
+        });
+
+        ImageButton boton_main= (ImageButton) findViewById(R.id.main_boton);
+        boton_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( recordatorios.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+        FloatingActionButton fab1 = findViewById(R.id.floating_action_button_2);
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( recordatorios.this, RecordatorioAdd.class);
+                startActivity(i);
+            }
+        });
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recordatorios);
+
+
+    }
+    public void crearListview(){
+        ListView mylistview = (ListView) findViewById(R.id.rv1);
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
@@ -68,8 +117,6 @@ public class recordatorios extends AppCompatActivity {
             lisitems.add(resultMap);
         }
         mylistview.setAdapter(adapter);
-
-        //Aqui el código para escuchar el tap del listview y eliminar recordatorios
         mylistview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -89,8 +136,10 @@ public class recordatorios extends AppCompatActivity {
 
                         Log.d("test_delete", itemValue.get("second"));
                         dialog.dismiss();
-                        Intent refresh = new Intent( recordatorios.this, recordatorios.class);
-                        startActivity(refresh);
+                        //Aqui se refresca la listview
+                        crearListview();
+                        //Intent refresh = new Intent( recordatorios.this, recordatorios.class);
+                        //startActivity(refresh);
                     }
                 });
                 popup.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
@@ -103,55 +152,8 @@ public class recordatorios extends AppCompatActivity {
                 dialog.setTitle("Eliminar Recordatorio");
                 dialog.show();
 
-
                 return false;
             }
         });
-        //Codigo duplicado
-        ImageButton recordatorio= (ImageButton) findViewById(R.id.recordatorio);
-        recordatorio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Aqui no hace nada pq estamos en recordatorios
-            }
-        });
-
-        ImageButton configuracion= (ImageButton) findViewById(R.id.configuracion);
-        configuracion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent( recordatorios.this, configuracion.class);
-                startActivity(i);
-            }
-        });
-
-        ImageButton boton_main= (ImageButton) findViewById(R.id.main_boton);
-        boton_main.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent( recordatorios.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
-
-        FloatingActionButton fab1 = findViewById(R.id.floating_action_button_2);
-        fab1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent( recordatorios.this, RecordatorioAdd.class);
-                startActivity(i);
-            }
-        });
-
-    }
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recordatorios);
-
-
     }
 }
