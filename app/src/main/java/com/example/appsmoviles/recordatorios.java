@@ -3,7 +3,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -28,6 +30,7 @@ public class recordatorios extends AppCompatActivity {
         mylistview = (ListView) findViewById(R.id.rv1);
 
         ImageButton Initial;
+
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
@@ -64,6 +67,17 @@ public class recordatorios extends AppCompatActivity {
             lisitems.add(resultMap);
         }
         mylistview.setAdapter(adapter);
+
+        //Aqui el código para escuchar el tap del listview y eliminar recordatorios
+        mylistview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                HashMap<String, String> itemValue = lisitems.get(i);
+                //Todo epic ahora solo falta hacer un DELETE de la wea en la BD
+                Log.d("test_delete", itemValue.get("second"));
+                return false;
+            }
+        });
         //Codigo duplicado
         ImageButton recordatorio= (ImageButton) findViewById(R.id.recordatorio);
         recordatorio.setOnClickListener(new View.OnClickListener() {
@@ -102,11 +116,12 @@ public class recordatorios extends AppCompatActivity {
 
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recordatorios);
-
 
 
     }
