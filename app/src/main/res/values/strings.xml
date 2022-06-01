@@ -19,4 +19,6 @@
     <string name="ingresar_fecha">Fecha</string>
     <string name="ingresar_subtitulo">Observaciones</string>
     <string name="dateFormat">dateFormat</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
 </resources>

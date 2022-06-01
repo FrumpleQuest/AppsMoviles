@@ -1,4 +1,5 @@
 package com.example.appsmoviles;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,8 +11,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -29,9 +32,6 @@ public class recordatorios extends AppCompatActivity {
         super.onResume();
         mylistview = (ListView) findViewById(R.id.rv1);
 
-        ImageButton Initial;
-
-
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
@@ -43,6 +43,7 @@ public class recordatorios extends AppCompatActivity {
         //LLenamos la lista con la BD (Aqui habría que tener 3 listas para los 3 atributos)
         HashMap<String, String> nameAddresses = new HashMap<>();
         boolean flag = true;
+        if (c.isAfterLast()) flag = false; //Aqui por si no hay recordatorios en la lista
         while(flag){
             nameAddresses.put(c.getString(2) + ", " + c.getString(4), c.getString(3));
             if (c.isLast()){
@@ -73,8 +74,36 @@ public class recordatorios extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 HashMap<String, String> itemValue = lisitems.get(i);
-                //Todo epic ahora solo falta hacer un DELETE de la wea en la BD
-                Log.d("test_delete", itemValue.get("second"));
+
+                AlertDialog.Builder popup = new AlertDialog.Builder(recordatorios.this);
+                popup.setMessage("Quiere eliminar este recordatorio?").setCancelable(false);
+                popup.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        SQLiteHelper usdbh = new SQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
+                        SQLiteDatabase db = usdbh.getWritableDatabase();
+                        String tabla = "Recordatorios";
+                        String whereClause = "Subtitulo=?";
+                        String[] whereArgs = new String[] {itemValue.get("second")};
+                        db.delete(tabla, whereClause, whereArgs);
+
+                        Log.d("test_delete", itemValue.get("second"));
+                        dialog.dismiss();
+                        Intent refresh = new Intent( recordatorios.this, recordatorios.class);
+                        startActivity(refresh);
+                    }
+                });
+                popup.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = popup.create();
+                dialog.setTitle("Eliminar Recordatorio");
+                dialog.show();
+
+
                 return false;
             }
         });
