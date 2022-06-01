@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-        Log.d("Resumido","Resumido be like");
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();

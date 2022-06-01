@@ -25,10 +25,6 @@ import java.util.Map;
 
 public class recordatorios extends AppCompatActivity {
 
-
-
-
-
     @Override
     public void onResume(){
         super.onResume();
@@ -136,10 +132,7 @@ public class recordatorios extends AppCompatActivity {
 
                         Log.d("test_delete", itemValue.get("second"));
                         dialog.dismiss();
-                        //Aqui se refresca la listview
                         crearListview();
-                        //Intent refresh = new Intent( recordatorios.this, recordatorios.class);
-                        //startActivity(refresh);
                     }
                 });
                 popup.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
