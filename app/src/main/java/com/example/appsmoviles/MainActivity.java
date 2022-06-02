@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        /*
         FloatingActionButton fab = findViewById(R.id.floating_action_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        /*
         FloatingActionButton Boton_Agregar = findViewById(R.id.floating_action_button_edit);
         Boton_Agregar.setOnClickListener(new View.OnClickListener(){
             @Override

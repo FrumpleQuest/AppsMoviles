@@ -23,6 +23,15 @@ public class configuracion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
 
+        TextView agregar_mascota = findViewById(R.id.add_mascota_from_config);
+        agregar_mascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( configuracion.this, PetAdd.class);
+                startActivity(i);
+            }
+        });
+
         //Funcionalidad de eliminar mascota
         TextView eliminar_mascota = findViewById(R.id.eliminar_mascota);
         eliminar_mascota.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +52,7 @@ public class configuracion extends AppCompatActivity {
 
                         //Revisamos si la mascota existe
                         String[] arreglo = new String[] {nombre};
+                        Log.d("testeo",arreglo[0]);
                         Cursor c = db.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
                         c.moveToFirst();
                         if (c.isAfterLast()){
@@ -64,6 +74,8 @@ public class configuracion extends AppCompatActivity {
 
                         Log.d("test_delete", nombre);
                         dialog.dismiss();
+                        Intent intento = new Intent( configuracion.this, MainActivity.class);
+                        startActivity(intento);
                     }
                 });
                 popup.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
