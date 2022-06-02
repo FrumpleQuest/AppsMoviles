@@ -15,9 +15,12 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class RecordatorioAdd extends AppCompatActivity {
     ImageButton record1, Initial;
@@ -26,15 +29,12 @@ public class RecordatorioAdd extends AppCompatActivity {
     String text1,text2,text3;
     EditText mDateFormat;
     DatePickerDialog.OnDateSetListener onDateSetListener;
+    TextInputEditText editText;
+    final Calendar myCalendar = Calendar.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recordatorio_add);
-
-        final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         boton_agregar = findViewById(R.id.extended_fab);
         boton_agregar.setOnClickListener(new View.OnClickListener() {
@@ -93,25 +93,29 @@ public class RecordatorioAdd extends AppCompatActivity {
             }
         });
 
-        mDateFormat = findViewById(R.id.dateFormat);
-        mDateFormat.setOnClickListener(new View.OnClickListener(){
+        //acá se agrega el calendario
+        editText=(TextInputEditText) findViewById(R.id.dateFormat);
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onClick(View v){
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        RecordatorioAdd.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        onDateSetListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
-        });
-        onDateSetListener  = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month+1;
-                String date = dayOfMonth+"/"+month+"/"+year;
-                mDateFormat.setText(date);
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, month);
+                myCalendar.set(Calendar.DAY_OF_MONTH, day);
+                updateLabel();
             }
         };
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(RecordatorioAdd.this, date, myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
+            }
+        });
+
+    }
+    private void updateLabel(){
+        String myFormat= "MM/dd/yy";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
+        editText.setText(dateFormat.format(myCalendar.getTime()));
     }
 }

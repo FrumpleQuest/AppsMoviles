@@ -94,8 +94,11 @@
                             android:id="@+id/dateFormat"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:inputType="date"
-                            android:hint="@string/ingresar_fecha"/>
+                            android:hint="@string/ingresar_fecha"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
