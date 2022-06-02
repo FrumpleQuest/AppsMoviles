@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -74,6 +75,9 @@ public class configuracion extends AppCompatActivity {
 
                         Log.d("test_delete", nombre);
                         dialog.dismiss();
+
+                        CharSequence texto = (CharSequence) nombre + " Eliminade";
+                        Toast.makeText(configuracion.this,texto, Toast.LENGTH_LONG).show();
                         Intent intento = new Intent( configuracion.this, MainActivity.class);
                         startActivity(intento);
                     }
