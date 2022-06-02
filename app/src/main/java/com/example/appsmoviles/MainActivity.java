@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         //LLenamos las listas de atributos con la BD
         cursorMascotas.moveToFirst();
         boolean flag = true;
+        if (cursorMascotas.isAfterLast()) flag = false; //Aqui por si no hay recordatorios en la lista
         while(flag){
             Nombres.add(cursorMascotas.getString(1));
             Especies.add(cursorMascotas.getString(2));
