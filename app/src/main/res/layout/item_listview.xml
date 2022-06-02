@@ -167,6 +167,7 @@
             </LinearLayout>
 
         </LinearLayout>
+        <!--
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_action_button_edit"
             android:layout_width="wrap_content"
@@ -176,7 +177,7 @@
             app:fabSize="mini"
             app:srcCompat="@drawable/pencil_icon"
             app:backgroundTint="#f85f6a"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO" />-->
 
     </FrameLayout>
 

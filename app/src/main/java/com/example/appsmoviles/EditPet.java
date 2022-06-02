@@ -16,7 +16,7 @@ public class EditPet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_pet);
-
+/*
         Boton_agregar=(FloatingActionButton) findViewById(R.id.floating_action_button_edit);
         Boton_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,7 +24,7 @@ public class EditPet extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
     }
 }
