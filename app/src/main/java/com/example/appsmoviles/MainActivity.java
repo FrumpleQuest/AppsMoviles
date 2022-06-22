@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
@@ -80,6 +81,22 @@ public class MainActivity extends AppCompatActivity {
         lst=(ListView) findViewById(R.id.mylistview);//lo estoy haciendo diferente al profe, realizando un casteo
         PerfilClass perfilClass = new PerfilClass(this,Nombres,Especies,Sexos,Fechas,Razas,Esterilizados,imgid);
         lst.setAdapter(perfilClass);
+/*
+        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView tx1=view.findViewById(R.id.Nombre);
+                //TextView tx2=view.findViewById(R.id.);
+
+                String texto1=tx1.getText().toString();
+                //String texto2=tx2.getText().toString();
+
+                Toast.makeText(getApplicationContext(), texto1+" ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+*/
+
 
 
     }
