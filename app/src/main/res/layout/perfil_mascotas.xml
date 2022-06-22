@@ -31,17 +31,6 @@
             android:id="@+id/mylistview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <!--
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_action_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_gravity="end|bottom"
-            app:srcCompat="@drawable/plus_icon_white"
-            app:backgroundTint="#f85f6a"
-            android:contentDescription="TODO" />
-        -->
     </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
