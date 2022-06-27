@@ -54,6 +54,7 @@
                 android:fontFamily="@font/quicksand_bold"
                 android:textColor="#5b1a04"
                 android:text="Ver Archivos"
+                android:textSize="12sp"
                 app:backgroundTint="#f85f6a"/>
         </LinearLayout>
 
@@ -64,7 +65,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="hola bola \n hola nola carambola \n hola ariancita :D">
+                android:text="Fecha de Nacimiento: \n Sexo: \n Especie: \n Raza: \n Color: ">
             </TextView>
 
         </androidx.cardview.widget.CardView>
@@ -92,14 +93,38 @@
                 android:layout_gravity="bottom|right"
                 android:fontFamily="@font/quicksand_bold"
                 android:textColor="#5b1a04"
-                android:text="Añadir Categoría"
+                android:text="+ Categoría"
+                android:textSize="12sp"
                 app:backgroundTint="#f85f6a"/>
 
         </LinearLayout>
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="AQUI IRIAN LAS ESTADISTICAS: \n SI TUVIERA UNAS!!! \n \n \n \n"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-        
+            </TextView>
+
+            <!-- Aqui irian las stats -->
+
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extended_fab_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:fontFamily="@font/quicksand_bold"
+            android:textColor="#5b1a04"
+            android:text="+"
+            android:textSize="12sp"
+            app:backgroundTint="#f85f6a"/>
 
     </LinearLayout>
     <LinearLayout
