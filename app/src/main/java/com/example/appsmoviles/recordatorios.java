@@ -31,6 +31,8 @@ public class recordatorios extends AppCompatActivity {
         //Ahora crear la listview ocurre en una funcion aparte
         crearListview();
 
+
+
         //Codigo duplicado
         ImageButton recordatorio= (ImageButton) findViewById(R.id.recordatorio);
         recordatorio.setOnClickListener(new View.OnClickListener() {

@@ -59,14 +59,43 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="hola bola">
+                android:text="hola bola \n hola nola carambola \n hola ariancita :D">
             </TextView>
 
         </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/extended_fab_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:fontFamily="@font/quicksand_bold"
+                android:textColor="#5b1a04"
+                android:text="Añadir Categoría"
+                app:backgroundTint="#f85f6a"/>
+
+        </LinearLayout>
 
 
 
