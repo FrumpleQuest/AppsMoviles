@@ -43,7 +43,7 @@ tools:context=".MainActivity">
         android:layout_margin="16dp"
         android:layout_gravity="end|bottom"
         app:srcCompat="@drawable/plus_icon_white"
-        app:backgroundTint="#f85f6a"
+        app:backgroundTint="@color/teal_200"
         android:contentDescription="TODO" />
 </FrameLayout>
 <LinearLayout

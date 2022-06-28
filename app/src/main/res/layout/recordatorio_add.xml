@@ -139,7 +139,7 @@
             android:fontFamily="@font/quicksand_bold"
             android:textColor="#5b1a04"
             android:text="@string/extended_fab_label"
-            app:backgroundTint="#f85f6a"
+            app:backgroundTint="@color/teal_200"
             android:layout_margin="16dp"
             app:icon="@drawable/plus_icon_white" />
     </FrameLayout>
