@@ -65,7 +65,7 @@
             android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"
-            android:src="@drawable/huella"/>
+            android:src="@drawable/iconopatita"/>
         <ImageButton
             android:id="@+id/configuracion"
             android:layout_width="0dp"
@@ -75,7 +75,6 @@
             android:layout_marginRight="5dp"
             android:layout_marginTop="0dp"
             android:adjustViewBounds="true"
-            android:padding="10dp"
             android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"

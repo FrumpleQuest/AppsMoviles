@@ -137,7 +137,7 @@
             android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"
-            android:src="@drawable/huella"/>
+            android:src="@drawable/icon_main_unselect"/>
         <ImageButton
             android:id="@+id/configuracion"
             android:layout_width="0dp"
@@ -151,7 +151,7 @@
             android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"
-            android:src="@drawable/setting"/>
+            android:src="@drawable/setting_select"/>
     </LinearLayout>
 </LinearLayout>
     <!--

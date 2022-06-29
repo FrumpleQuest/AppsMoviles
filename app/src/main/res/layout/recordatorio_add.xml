@@ -161,7 +161,7 @@
             android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"
-            android:src="@drawable/calendar"/>
+            android:src="@drawable/calendarselected"/>
         <ImageButton
             android:id="@+id/main_boton"
             android:layout_width="0dp"
@@ -175,7 +175,7 @@
             android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"
-            android:src="@drawable/huella"/>
+            android:src="@drawable/icon_main_unselect"/>
         <ImageButton
             android:id="@+id/configuracion"
             android:layout_width="0dp"

@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         recordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                recordatorio.setImageResource(R.drawable.calendarselected);
                 Intent i = new Intent( MainActivity.this, recordatorios.class);
                 startActivity(i);
             }
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         configuracion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent( MainActivity.this, estadisticas.class);
+                Intent i = new Intent( MainActivity.this, configuracion.class);
                 startActivity(i);
             }
         });

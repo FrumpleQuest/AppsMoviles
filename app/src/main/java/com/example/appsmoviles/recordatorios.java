@@ -35,6 +35,7 @@ public class recordatorios extends AppCompatActivity {
 
         //Codigo duplicado
         ImageButton recordatorio= (ImageButton) findViewById(R.id.recordatorio);
+        recordatorio.setImageResource(R.drawable.calendarselected);
         recordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +53,7 @@ public class recordatorios extends AppCompatActivity {
         });
 
         ImageButton boton_main= (ImageButton) findViewById(R.id.main_boton);
+        boton_main.setImageResource(R.drawable.icon_main_unselect);
         boton_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
