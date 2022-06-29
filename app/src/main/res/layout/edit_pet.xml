@@ -230,7 +230,7 @@
             android:fontFamily="@font/quicksand_bold"
             android:textColor="#5b1a04"
             android:text="@string/extended_edit_pet_buttom"
-            app:backgroundTint="#f85f6a"
+            app:backgroundTint="#9DE2D5"
             android:layout_margin="16dp" />
     </FrameLayout>
 
@@ -265,7 +265,7 @@
             android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"
-            android:src="@drawable/huella"/>
+            android:src="@drawable/icon_main_unselect"/>
         <ImageButton
             android:id="@+id/configuracion"
             android:layout_width="0dp"
@@ -279,7 +279,7 @@
             android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"
-            android:src="@drawable/setting"/>
+            android:src="@drawable/setting_select"/>
     </LinearLayout>
 
 </LinearLayout>
