@@ -89,7 +89,17 @@ public class MainActivity extends AppCompatActivity {
                 TextView tx1=view.findViewById(R.id.Nombre);
                 //TextView tx2=view.findViewById(R.id.);
 
+
                 String text=tx1.getText().toString();
+
+                //estadisticas estadisticas= new estadisticas(text);
+                Intent statistics = new Intent(MainActivity.this, estadisticas.class);
+                Bundle bundle = new Bundle();
+
+
+                bundle.putString("id",text);
+                statistics.putExtras(bundle);
+                startActivity(statistics);
                 //String texto2=tx2.getText().toString();
 
                 Toast.makeText(getApplicationContext(), text+" ", Toast.LENGTH_SHORT).show();
