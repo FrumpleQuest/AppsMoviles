@@ -64,11 +64,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Fecha de Nacimiento: \n Sexo: \n Especie: \n Raza: \n Color: ">
-            </TextView>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/stats_fecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Fecha de Nacimiento: ">
+                </TextView>
+                <TextView
+                    android:id="@+id/stats_sexo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Sexo: ">
+                </TextView>
+                <TextView
+                    android:id="@+id/stats_especie"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Especie: ">
+                </TextView>
+                <TextView
+                    android:id="@+id/stats_raza"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Raza: ">
+                </TextView>
+                <TextView
+                    android:id="@+id/stats_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Color: ">
+                </TextView>
+
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
