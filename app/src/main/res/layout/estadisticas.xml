@@ -47,7 +47,7 @@
                 android:fontFamily="@font/quicksand_bold">
             </TextView>
             <Button
-                android:id="@+id/extended_fab"
+                android:id="@+id/verArchivosButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
@@ -55,6 +55,7 @@
                 android:textColor="#5b1a04"
                 android:text="Ver Archivos"
                 android:textSize="12sp"
+                android:onClick="verArchivosOnClick"
                 app:backgroundTint="@color/teal_200"/>
         </LinearLayout>
 
@@ -97,7 +98,7 @@
             </TextView>
 
             <Button
-                android:id="@+id/extended_fab_2"
+                android:id="@+id/addCategoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -106,7 +107,9 @@
                 android:textColor="#5b1a04"
                 android:text="+ Categoría"
                 android:textSize="12sp"
-                app:backgroundTint="@color/teal_200"/>
+                app:backgroundTint="@color/teal_200"
+                android:onClick="addCategoria"/>
+            <!-- Este button debería abrir un modal donde puedas poner el nombre y ejes de categoria -->
 
         </LinearLayout>
 
