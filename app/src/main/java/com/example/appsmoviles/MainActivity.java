@@ -87,22 +87,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView tx1=view.findViewById(R.id.Nombre);
-                //TextView tx2=view.findViewById(R.id.);
-
-
                 String text=tx1.getText().toString();
-
-                //estadisticas estadisticas= new estadisticas(text);
                 Intent statistics = new Intent(MainActivity.this, estadisticas.class);
                 Bundle bundle = new Bundle();
-
-
                 bundle.putString("id",text);
                 statistics.putExtras(bundle);
                 startActivity(statistics);
-                //String texto2=tx2.getText().toString();
-
-                Toast.makeText(getApplicationContext(), text+" ", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -131,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         configuracion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent( MainActivity.this, estadisticas.class);
+                Intent i = new Intent( MainActivity.this, configuracion.class);
                 startActivity(i);
             }
         });

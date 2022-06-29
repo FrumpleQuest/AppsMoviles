@@ -28,29 +28,14 @@ public class estadisticas extends AppCompatActivity {
     String[] strings = {"Opcion 1", "Opcion 2", "Opcion 3"};
     TextView nombreMascota;
 
-
-
-
-    //String nombre = LoQueMeDeElCamilo();
-
-    //Aqui el ton busca en la BD, obtiene las estadisticas y las presenta
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estadisticas);
         nombreMascota=(TextView) findViewById(R.id.name_statistics_pet);
         Bundle bundle = getIntent().getExtras();
-        String id = getIntent().getExtras().getString("id");
-        nombreMascota.setText(id);
-
-        Log.d("Holablobla ",id);
-
-
-
-
-
-
+        String nombre = getIntent().getExtras().getString("id");
+        nombreMascota.setText(nombre);
 
 
         //-----------------------------Codigo duplicado-----------------------------------
