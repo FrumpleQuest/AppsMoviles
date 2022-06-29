@@ -106,6 +106,16 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         dato.put("ID_Categoria", 1);
         dato.put("Valor", 5);
         db.insert("Datos",null,dato);
+
+        ContentValues dato2 = new ContentValues(2);
+        dato.put("ID_Categoria", 1);
+        dato.put("Valor", 5.2);
+        db.insert("Datos",null,dato);
+
+        ContentValues dato3 = new ContentValues(2);
+        dato.put("ID_Categoria", 1);
+        dato.put("Valor", 5.4);
+        db.insert("Datos",null,dato);
     }
 
     @Override
