@@ -23,6 +23,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.w3c.dom.Text;
+
 public class estadisticas extends AppCompatActivity {
 
     String[] strings = {"Opcion 1", "Opcion 2", "Opcion 3"};
@@ -36,6 +38,32 @@ public class estadisticas extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String nombre = getIntent().getExtras().getString("id");
         nombreMascota.setText(nombre);
+
+
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
+        SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
+        SQLiteDatabase db = usdbh.getWritableDatabase();
+
+        String[] arreglo = new String[] {nombre};
+        Cursor c = db.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
+        c.moveToFirst();
+
+        TextView fecha = (TextView) findViewById(R.id.stats_fecha);
+        TextView sexo = (TextView) findViewById(R.id.stats_sexo);
+        TextView especie = (TextView) findViewById(R.id.stats_especie);
+        TextView raza = (TextView) findViewById(R.id.stats_raza);
+        TextView esterilizado = (TextView) findViewById(R.id.stats_color);
+
+        String siono;
+        if(c.getString(6) == "1") siono = "si";
+        else siono = "no";
+
+        fecha.setText("Fecha de Nacimiento: " + c.getString(4));
+        sexo.setText("Sexo: " + c.getString(3));
+        especie.setText("Especie: " + c.getString(2));
+        raza.setText("Raza: " + c.getString(5));
+        esterilizado.setText("Esterilizada/o: " + siono);
 
 
         //-----------------------------Codigo duplicado-----------------------------------
@@ -88,12 +116,13 @@ public class estadisticas extends AppCompatActivity {
 
     public void addCategoria(View view) {
                 RelativeLayout relativeLayout = new RelativeLayout(this);
-                TextView textView = new TextView(this);
-                textView.setText("Test");
-                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-                textView.setLayoutParams(layoutParams);
-                relativeLayout.addView(textView);
+                EditText text = new EditText(this);
+
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
+                text.setLayoutParams(layoutParams);
+                relativeLayout.addView(text);
 
                 AlertDialog.Builder popup = new AlertDialog.Builder(estadisticas.this);
                 popup.setView(relativeLayout);

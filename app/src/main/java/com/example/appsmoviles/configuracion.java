@@ -53,7 +53,6 @@ public class configuracion extends AppCompatActivity {
 
                         //Revisamos si la mascota existe
                         String[] arreglo = new String[] {nombre};
-                        Log.d("testeo",arreglo[0]);
                         Cursor c = db.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
                         c.moveToFirst();
                         if (c.isAfterLast()){
