@@ -23,160 +23,166 @@
             android:gravity="center"
             />
     </com.google.android.material.appbar.AppBarLayout>
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="100dp">
-
+        android:layout_weight="1">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/name_statistics_pet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="20dp"
-                android:paddingTop="20dp"
-                android:text="Mako"
-                android:textSize="35sp"
-                android:fontFamily="@font/quicksand_bold">
-            </TextView>
-            <Button
-                android:id="@+id/verArchivosButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:fontFamily="@font/quicksand_bold"
-                android:textColor="#5b1a04"
-                android:text="Ver Archivos"
-                android:textSize="12sp"
-                android:onClick="verArchivosOnClick"
-                app:backgroundTint="@color/teal_200"/>
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="100dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/stats_fecha"
+                    android:id="@+id/name_statistics_pet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:text="Mako"
+                    android:textSize="35sp"
+                    android:fontFamily="@font/quicksand_bold">
+                </TextView>
+                <Button
+                    android:id="@+id/verArchivosButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textColor="#5b1a04"
+                    android:text="Ver Archivos"
+                    android:textSize="12sp"
+                    android:onClick="verArchivosOnClick"
+                    app:backgroundTint="@color/teal_200"/>
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/stats_fecha"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Fecha de Nacimiento: ">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/stats_sexo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Sexo: ">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/stats_especie"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Especie: ">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/stats_raza"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Raza: ">
+                    </TextView>
+                    <TextView
+                        android:id="@+id/stats_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Esterilizado: ">
+                    </TextView>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Fecha de Nacimiento: ">
-                </TextView>
-                <TextView
-                    android:id="@+id/stats_sexo"
+                    android:layout_margin="5dp">
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+                </androidx.cardview.widget.CardView>
+                <!--
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="     ">
+                            </TextView>
+                -->
+                <Button
+                    android:id="@+id/addCategoria"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="right"
                     android:layout_weight="1"
-                    android:text="Sexo: ">
-                </TextView>
-                <TextView
-                    android:id="@+id/stats_especie"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Especie: ">
-                </TextView>
-                <TextView
-                    android:id="@+id/stats_raza"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Raza: ">
-                </TextView>
-                <TextView
-                    android:id="@+id/stats_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Esterilizado: ">
-                </TextView>
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textColor="#5b1a04"
+                    android:text="+ Categoría"
+                    android:textSize="12sp"
+                    app:backgroundTint="@color/teal_200"
+                    android:onClick="addCategoria"/>
+                <!-- Este button debería abrir un modal donde puedas poner el nombre y ejes de categoria -->
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
-
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1">
-
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="     ">
-            </TextView>
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="AQUI IRIAN LAS ESTADISTICAS: \n SI TUVIERA UNAS!!! \n \n \n \n"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/addCategoria"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_weight="2"
-                android:fontFamily="@font/quicksand_bold"
-                android:textColor="#5b1a04"
-                android:text="+ Categoría"
-                android:textSize="12sp"
-                app:backgroundTint="@color/teal_200"
-                android:onClick="addCategoria"/>
-            <!-- Este button debería abrir un modal donde puedas poner el nombre y ejes de categoria -->
+
+                </TextView>
+
+                <!-- Aqui irian las stats -->
+
+
+            </androidx.cardview.widget.CardView>
+
+
 
         </LinearLayout>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:text="AQUI IRIAN LAS ESTADISTICAS: \n SI TUVIERA UNAS!!! \n \n \n \n"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-            </TextView>
-
-            <!-- Aqui irian las stats -->
-
-
-        </androidx.cardview.widget.CardView>
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:src="@drawable/plus_icon_white"
-            android:layout_margin="16dp" />
+            android:layout_margin="16dp"
+            android:src="@drawable/plus_icon_white" />
+    </FrameLayout>
 
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
