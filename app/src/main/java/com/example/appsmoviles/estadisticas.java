@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -115,35 +116,31 @@ public class estadisticas extends AppCompatActivity {
     }
 
     public void addCategoria(View view) {
-                RelativeLayout relativeLayout = new RelativeLayout(this);
+                LinearLayout relativeLayout = new LinearLayout(this);
+                relativeLayout.setOrientation(LinearLayout.VERTICAL);
                 EditText text = new EditText(this);
+                EditText text2 = new EditText(this);
+                EditText text3 = new EditText(this);
 
+                text.setHint("Nombre de Categoría");
+                text2.setHint("Nombre del Eje X");
+                text3.setHint("Nombre del Eje Y");
                 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-
                 text.setLayoutParams(layoutParams);
+                text2.setLayoutParams(layoutParams);
+                text3.setLayoutParams(layoutParams);
                 relativeLayout.addView(text);
+                relativeLayout.addView(text2);
+                relativeLayout.addView(text3);
+
 
                 AlertDialog.Builder popup = new AlertDialog.Builder(estadisticas.this);
-                popup.setView(relativeLayout);
-                popup.setMessage("Nombre de Categoria").setCancelable(true);
-
-                AlertDialog dialog = popup.create();
-                dialog.setTitle("Añadir Categoria");
-                dialog.show();
-
-                //AQUI FALTA ORDENAR EL RELATIVE LAYOUT Y LUEGO EDITAR LA BD PARA AGREGAR LA CATEGORIA
-
-                /*
-                final EditText nombre_categoria = new EditText(estadisticas.this);
-                final EditText eje_x = new EditText(estadisticas.this);
-                final EditText eje_y = new EditText(estadisticas.this);
-                AlertDialog.Builder popup = new AlertDialog.Builder(estadisticas.this);
-                popup.setView(relativeLayout);
-                popup.setMessage("Nombre de Categoria").setCancelable(true);
+                popup.setView(relativeLayout).setCancelable(true);
                 popup.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
+                        /*
                         //Obtenemos nombre de mascota
                         String nombre = nombre_categoria.getText().toString();
                         //Abrimos BD
@@ -179,12 +176,19 @@ public class estadisticas extends AppCompatActivity {
                         Toast.makeText(estadisticas.this,texto, Toast.LENGTH_LONG).show();
                         Intent intento = new Intent( estadisticas.this, MainActivity.class);
                         startActivity(intento);
+                        */
+                    }
+                });
+                popup.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //
                     }
                 });
                 AlertDialog dialog = popup.create();
-                dialog.setTitle("Eliminar Mascota");
+                dialog.setTitle("Añadir Categoria");
                 dialog.show();
 
-                */
+
     }
 }
