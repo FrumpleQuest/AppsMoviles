@@ -1,5 +1,6 @@
 package com.example.appsmoviles;
 
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -26,15 +27,33 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class estadisticas extends AppCompatActivity {
 
-    String[] strings = {"Opcion 1", "Opcion 2", "Opcion 3"};
+    List<String> categorias;
     TextView nombreMascota;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estadisticas);
+
+        categorias = new ArrayList<>();
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
+        SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
+        SQLiteDatabase db = usdbh.getWritableDatabase();
+
+        //Obtenemos categorias
+        Cursor c = db.rawQuery("SELECT * FROM Categorias",null);
+        c.moveToFirst();
+        while(!c.isAfterLast()){
+            categorias.add(c.getString(2));
+            c.moveToNext();
+        }
+
         nombreMascota=(TextView) findViewById(R.id.name_statistics_pet);
         Bundle bundle = getIntent().getExtras();
         String nombre = getIntent().getExtras().getString("id");
@@ -42,13 +61,11 @@ public class estadisticas extends AppCompatActivity {
 
 
 
-        //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
-        SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
-        SQLiteDatabase db = usdbh.getWritableDatabase();
+
 
         String[] arreglo = new String[] {nombre};
-        Cursor c = db.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
-        c.moveToFirst();
+        Cursor c2 = db.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
+        c2.moveToFirst();
 
         TextView fecha = (TextView) findViewById(R.id.stats_fecha);
         TextView sexo = (TextView) findViewById(R.id.stats_sexo);
@@ -57,13 +74,13 @@ public class estadisticas extends AppCompatActivity {
         TextView esterilizado = (TextView) findViewById(R.id.stats_color);
 
         String siono;
-        if(c.getString(6) == "1") siono = "si";
+        if(c2.getString(6) == "1") siono = "si";
         else siono = "no";
 
-        fecha.setText("Fecha de Nacimiento: " + c.getString(4));
-        sexo.setText("Sexo: " + c.getString(3));
-        especie.setText("Especie: " + c.getString(2));
-        raza.setText("Raza: " + c.getString(5));
+        fecha.setText("Fecha de Nacimiento: " + c2.getString(4));
+        sexo.setText("Sexo: " + c2.getString(3));
+        especie.setText("Especie: " + c2.getString(2));
+        raza.setText("Raza: " + c2.getString(5));
         esterilizado.setText("Esterilizada/o: " + siono);
 
 
@@ -101,10 +118,12 @@ public class estadisticas extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+        updateCategorias();
+    }
 
+    public void updateCategorias(){
         Spinner spin = (Spinner) findViewById(R.id.spinner);
-        //Log.d("spinner ql","hola");
-        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_spinner_item,strings);
+        ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_spinner_item,categorias);
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adaptador);
     }
@@ -144,6 +163,35 @@ public class estadisticas extends AppCompatActivity {
                         final String categoria = text.getText().toString();
                         final String Ejey = text.getText().toString();
                         final String Ejex = text.getText().toString();
+
+
+
+                        SQLiteHelper usdbh2 = new SQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
+                        SQLiteDatabase db2 = usdbh2.getWritableDatabase();
+
+                        String[] arreglo = new String[] {"Mako"};
+                        Cursor c = db2.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
+                        c.moveToFirst();
+
+                        int ID = Integer.parseInt(c.getString(0));
+                        Log.d("tonID",String.valueOf(ID));
+
+
+                        ContentValues nueva_categoria = new ContentValues(4);
+                        nueva_categoria.put("ID_Mascota",ID);
+                        nueva_categoria.put("Nombre", categoria);
+                        nueva_categoria.put("EjeX", Ejex);
+                        nueva_categoria.put("EjeY",Ejey);
+
+                        db2.insert("Categorias",null, nueva_categoria);
+
+                        //Test
+                        Cursor rectestcursor= db2.rawQuery("SELECT * FROM Categorias",null);
+                        rectestcursor.moveToFirst();
+                        while(!rectestcursor.isAfterLast()){
+                            Log.d("categoria", rectestcursor.getString(2));
+                            rectestcursor.moveToNext();
+                        }
 
 
                     }
