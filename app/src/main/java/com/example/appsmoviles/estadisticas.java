@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import org.w3c.dom.Text;
 
@@ -119,6 +130,75 @@ public class estadisticas extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         updateCategorias();
+        updateChart();
+    }
+
+    public void updateChart(){
+        //Obtenemos categoria actual del spinner
+        Spinner spin = findViewById(R.id.spinner);
+        String categoria = spin.getSelectedItem().toString();
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
+        SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
+        SQLiteDatabase db = usdbh.getWritableDatabase();
+
+        //Obtenemos los elementos desde la BD
+        String[] arr = {categoria};
+        Cursor c = db.rawQuery("SELECT * FROM Categorias WHERE Nombre = ?",arr);
+        c.moveToFirst();
+
+        String ID_Categoria = c.getString(0);
+        String[] arr2 = {ID_Categoria};
+        Cursor c2 = db.rawQuery("SELECT * FROM Datos WHERE ID_Categoria = ?",arr2);
+        c2.moveToFirst();
+
+        //LLenamos los valores del grafico
+        ArrayList<Entry> valores = new ArrayList<Entry>();
+        int d = 0;
+        while(!c2.isAfterLast()){
+            String fecha = c2.getString(2); //Por ahora ignorara la fecha, luego debera transformarla
+            valores.add(new Entry(d++, Float.parseFloat(c2.getString(3))));
+            c2.moveToNext();
+        }
+        //Construimos la estetica del grafico
+        LineChart grafico = findViewById(R.id.line_chart);
+        grafico.setNoDataText("No existen datos disponibles");
+        grafico.setNoDataTextColor(R.color.black);
+        grafico.setDrawGridBackground(true);
+        grafico.setDrawBorders(true);
+
+        grafico.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        grafico.getAxisLeft().setEnabled(false);
+
+        Legend legend = grafico.getLegend();
+        legend.setEnabled(true);
+        legend.setTextColor(R.color.teal_200);
+        legend.setTextSize(15);
+
+        Description desc = new Description();
+        desc.setTextSize(0);
+        desc.setText("");
+        grafico.setDescription(desc);
+
+        //Construimos la estetica de los datos
+        LineDataSet data = new LineDataSet(valores,"Categoria (hardcoded)");
+        data.setLineWidth(5);
+        data.setColor(Color.CYAN);
+        data.setCircleHoleColor(Color.CYAN);
+        data.setCircleColor(Color.BLACK);
+        data.setCircleRadius(4);
+        data.setCircleHoleRadius(1.5f);
+
+        //Creamos y mostramos el grafico
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(data);
+
+        LineData ldata = new LineData(dataSets);
+        ldata.setValueTextColor(R.color.teal_200);
+        ldata.setValueTextSize(12);
+        grafico.setData(ldata);
+        grafico.invalidate();
+
     }
 
     public void updateCategorias(){
@@ -185,13 +265,7 @@ public class estadisticas extends AppCompatActivity {
 
                         db2.insert("Categorias",null, nueva_categoria);
 
-                        //Test
-                        Cursor rectestcursor= db2.rawQuery("SELECT * FROM Categorias",null);
-                        rectestcursor.moveToFirst();
-                        while(!rectestcursor.isAfterLast()){
-                            Log.d("categoria", rectestcursor.getString(2));
-                            rectestcursor.moveToNext();
-                        }
+                        updateCategorias();
 
 
                     }

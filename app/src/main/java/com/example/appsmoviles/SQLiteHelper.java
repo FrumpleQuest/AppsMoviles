@@ -35,6 +35,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     String sqlCreateDato = "CREATE TABLE Datos " +
             "(ID_Dato INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "ID_Categoria INTEGER, " +
+            "Fecha TEXT, " +
             "Valor INTEGER, " +
             "CONSTRAINT fk_categorias FOREIGN KEY (ID_Categoria) REFERENCES Categorias(ID_Categoria))";
     //AQUI HAY QUE ARREGLAR PARA QUE TENGA LA DIRECCION DE LOS ARCHIVOS Y EL NOMBRE
@@ -104,16 +105,19 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
         ContentValues dato = new ContentValues(2);
         dato.put("ID_Categoria", 1);
+        dato.put("Fecha","2020/01/01");
         dato.put("Valor", 5);
         db.insert("Datos",null,dato);
 
         ContentValues dato2 = new ContentValues(2);
         dato.put("ID_Categoria", 1);
+        dato.put("Fecha","2021/01/01");
         dato.put("Valor", 5.2);
         db.insert("Datos",null,dato);
 
         ContentValues dato3 = new ContentValues(2);
         dato.put("ID_Categoria", 1);
+        dato.put("Fecha","2022/01/01");
         dato.put("Valor", 5.4);
         db.insert("Datos",null,dato);
     }
