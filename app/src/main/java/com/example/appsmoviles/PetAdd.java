@@ -78,8 +78,6 @@ public class PetAdd extends AppCompatActivity {
                 tv7 = findViewById(R.id.text_add_obs);
                 text7 = tv7.getEditText().getText().toString();
 
-                Log.d("add_mascotas",text1 + text2 + text3 + text4 + text5 + text6 + text7);
-
                 SQLiteHelper usdbh2 = new SQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
                 SQLiteDatabase db2 = usdbh2.getWritableDatabase();
                 ContentValues nueva_pet = new ContentValues(6);

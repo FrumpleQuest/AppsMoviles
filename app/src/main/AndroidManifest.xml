@@ -33,6 +33,9 @@
         <activity android:name=".estadisticas"
             android:exported="false"
             android:screenOrientation="portrait"/>
+        <activity android:name=".addDato"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
