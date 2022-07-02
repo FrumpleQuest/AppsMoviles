@@ -116,73 +116,42 @@ public class estadisticas extends AppCompatActivity {
     }
 
     public void addCategoria(View view) {
-                LinearLayout relativeLayout = new LinearLayout(this);
-                relativeLayout.setOrientation(LinearLayout.VERTICAL);
+                LinearLayout linear = new LinearLayout(this);
+                linear.setOrientation(LinearLayout.VERTICAL);
                 EditText text = new EditText(this);
                 EditText text2 = new EditText(this);
                 EditText text3 = new EditText(this);
+
 
                 text.setHint("Nombre de Categoría");
                 text2.setHint("Nombre del Eje X");
                 text3.setHint("Nombre del Eje Y");
                 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
+                layoutParams.setMargins(50,0,50,0);
                 text.setLayoutParams(layoutParams);
                 text2.setLayoutParams(layoutParams);
                 text3.setLayoutParams(layoutParams);
-                relativeLayout.addView(text);
-                relativeLayout.addView(text2);
-                relativeLayout.addView(text3);
+                linear.addView(text);
+                linear.addView(text2);
+                linear.addView(text3);
 
 
                 AlertDialog.Builder popup = new AlertDialog.Builder(estadisticas.this);
-                popup.setView(relativeLayout).setCancelable(true);
+                popup.setView(linear).setCancelable(true);
                 popup.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
-                        /*
-                        //Obtenemos nombre de mascota
-                        String nombre = nombre_categoria.getText().toString();
-                        //Abrimos BD
-                        SQLiteHelper usdbh = new SQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
-                        SQLiteDatabase db = usdbh.getWritableDatabase();
-
-                        //Revisamos si la mascota existe
-                        String[] arreglo = new String[] {nombre};
-                        Log.d("testeo",arreglo[0]);
-                        Cursor c = db.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
-                        c.moveToFirst();
-                        if (c.isAfterLast()){
-                            Log.d("test_delete","La mascota no existe");
-                            dialog.dismiss();
-                            AlertDialog.Builder noexiste_builder = new AlertDialog.Builder(estadisticas.this);
-                            noexiste_builder.setMessage("La mascota no existe");
-                            AlertDialog noexiste = noexiste_builder.create();
-                            noexiste.show();
-                        }
-
-                        //Construimos la query
-                        String tabla = "Mascotas";
-                        String whereClause = "Nombre=?";
-                        String[] whereArgs = new String[] {nombre};
-                        //Ejecutamos la query
-                        db.delete(tabla, whereClause, whereArgs);
+                        final String categoria = text.getText().toString();
+                        final String Ejey = text.getText().toString();
+                        final String Ejex = text.getText().toString();
 
 
-                        Log.d("test_delete", nombre);
-                        dialog.dismiss();
-
-                        CharSequence texto = (CharSequence) nombre + " Eliminade";
-                        Toast.makeText(estadisticas.this,texto, Toast.LENGTH_LONG).show();
-                        Intent intento = new Intent( estadisticas.this, MainActivity.class);
-                        startActivity(intento);
-                        */
                     }
                 });
                 popup.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //
+                        dialogInterface.cancel();
                     }
                 });
                 AlertDialog dialog = popup.create();
@@ -190,5 +159,10 @@ public class estadisticas extends AppCompatActivity {
                 dialog.show();
 
 
+    }
+
+    public void agregarDato(View view) {
+        Intent i = new Intent(estadisticas.this,addDato.class);
+        startActivity(i);
     }
 }
