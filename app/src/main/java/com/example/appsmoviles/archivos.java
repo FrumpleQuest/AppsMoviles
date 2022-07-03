@@ -13,18 +13,39 @@ import android.media.VolumeShaper;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class archivos extends AppCompatActivity {
 
     private static final int TAKE_PICTURE = 0;
+    FloatingActionButton btnCam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_archivos);
+
+        btnCam = (FloatingActionButton) findViewById(R.id.btn_foto_archivo);
+
+        btnCam.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new Intent();
+                    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivity(intent);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
     }
+
+/*
 
     public void sacarFoto(View view){
         if(view.getId() == R.id.btn_foto_archivo && getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
@@ -69,5 +90,5 @@ public class archivos extends AppCompatActivity {
         matrix.postRotate(angle);
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
     }
-
+*/
 }
