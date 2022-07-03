@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -51,28 +52,14 @@ public class estadisticas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estadisticas);
 
-        categorias = new ArrayList<>();
-
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
-
-        //Obtenemos categorias
-        Cursor c = db.rawQuery("SELECT * FROM Categorias",null);
-        c.moveToFirst();
-        while(!c.isAfterLast()){
-            categorias.add(c.getString(2));
-            c.moveToNext();
-        }
 
         nombreMascota=(TextView) findViewById(R.id.name_statistics_pet);
         Bundle bundle = getIntent().getExtras();
         String nombre = getIntent().getExtras().getString("id");
         nombreMascota.setText(nombre);
-
-
-
-
 
         String[] arreglo = new String[] {nombre};
         Cursor c2 = db.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
@@ -181,7 +168,7 @@ public class estadisticas extends AppCompatActivity {
         grafico.setDescription(desc);
 
         //Construimos la estetica de los datos
-        LineDataSet data = new LineDataSet(valores,"Categoria (hardcoded)");
+        LineDataSet data = new LineDataSet(valores,categoria);
         data.setLineWidth(5);
         data.setColor(Color.CYAN);
         data.setCircleHoleColor(Color.CYAN);
@@ -201,10 +188,37 @@ public class estadisticas extends AppCompatActivity {
 
     }
 
+
     public void updateCategorias(){
+        categorias = new ArrayList<>();
+
+        //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
+        SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
+        SQLiteDatabase db = usdbh.getWritableDatabase();
+
+        //Obtenemos categorias
+        Cursor c = db.rawQuery("SELECT * FROM Categorias",null);
+        c.moveToFirst();
+        while(!c.isAfterLast()){
+            categorias.add(c.getString(2));
+            c.moveToNext();
+        }
+
         Spinner spin = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_spinner_item,categorias);
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("spintest",String.valueOf(position));
+            }
+            //Esta funcion no sirve de nada lol
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.d("spintest","nothing");
+            }
+        });
         spin.setAdapter(adaptador);
     }
 
@@ -252,22 +266,15 @@ public class estadisticas extends AppCompatActivity {
                         String[] arreglo = new String[] {"Mako"};
                         Cursor c = db2.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
                         c.moveToFirst();
-
                         int ID = Integer.parseInt(c.getString(0));
-                        Log.d("tonID",String.valueOf(ID));
-
-
                         ContentValues nueva_categoria = new ContentValues(4);
                         nueva_categoria.put("ID_Mascota",ID);
                         nueva_categoria.put("Nombre", categoria);
                         nueva_categoria.put("EjeX", Ejex);
                         nueva_categoria.put("EjeY",Ejey);
-
                         db2.insert("Categorias",null, nueva_categoria);
 
                         updateCategorias();
-
-
                     }
                 });
                 popup.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
