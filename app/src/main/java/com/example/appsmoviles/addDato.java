@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -20,6 +21,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -34,10 +36,16 @@ import java.util.TreeMap;
 
 public class addDato extends Activity {
 
+    String categoria_actual;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adddato);
+
+        Bundle bundle = getIntent().getExtras();
+        String categoria = getIntent().getExtras().getString("categoria");
+        categoria_actual = categoria;
 
     }
 
@@ -80,7 +88,60 @@ public class addDato extends Activity {
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
+                final EditText edittext = new EditText(addDato.this);
+                AlertDialog.Builder popup = new AlertDialog.Builder(addDato.this);
+                popup.setView(edittext);
+                popup.setMessage("Agregar Dato").setCancelable(false);
+                popup.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        //Obtenemos nombre de mascota
+                        String nombre = edittext.getText().toString();
+                        //Abrimos BD
+                        SQLiteHelper usdbh = new SQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
+                        SQLiteDatabase db = usdbh.getWritableDatabase();
 
+                        //Revisamos si la mascota existe
+                        String[] arreglo = new String[] {nombre};
+                        Cursor c = db.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
+                        c.moveToFirst();
+                        if (c.isAfterLast()){
+                            Log.d("test_delete","La mascota no existe");
+                            dialog.dismiss();
+                            AlertDialog.Builder noexiste_builder = new AlertDialog.Builder(addDato.this);
+                            noexiste_builder.setMessage("La mascota no existe");
+                            AlertDialog noexiste = noexiste_builder.create();
+                            noexiste.show();
+                        }
+
+                        //Construimos la query
+                        String tabla = "Mascotas";
+                        String whereClause = "Nombre=?";
+                        String[] whereArgs = new String[] {nombre};
+                        //Ejecutamos la query
+                        db.delete(tabla, whereClause, whereArgs);
+
+
+                        Log.d("test_delete", nombre);
+                        dialog.dismiss();
+
+                        CharSequence texto = (CharSequence) nombre + " Eliminade";
+                        Toast.makeText(addDato.this,texto, Toast.LENGTH_LONG).show();
+                        Intent intento = new Intent( addDato.this, MainActivity.class);
+                        startActivity(intento);
+                    }
+                });
+                popup.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = popup.create();
+                dialog.setTitle("Eliminar Mascota");
+                dialog.show();
+                */
             }
         });
     }
@@ -125,22 +186,37 @@ public class addDato extends Activity {
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
 
-        //Obtenemos los elementos desde la BD
-        Cursor c = db.rawQuery("SELECT * FROM Datos",null);
-        c.moveToFirst();
-
-        //LLenamos la lista con la BD (Aqui habría que tener 3 listas para los 3 atributos)
-        TreeMap<String, String> dicc = new TreeMap<>();
-        boolean flag = true;
-        if (c.isAfterLast()) flag = false; //Aqui por si no hay recordatorios en la lista
-        while(flag){
-            dicc.put(c.getString(2), c.getString(3));
-            if (c.isLast()){
-                flag = false;
+        boolean existe_categoria = true;
+        //Encontramos id categoria actual
+        String[] arg = {categoria_actual};
+        Cursor c_pre = db.rawQuery("SELECT * FROM Categorias WHERE Nombre = ?",arg);
+        c_pre.moveToFirst();
+        if (c_pre.isAfterLast()) existe_categoria = false;
+        if (existe_categoria){
+            String ID = c_pre.getString(0);
+            String[] ID_arg = {ID};
+            //Obtenemos los elementos desde la BD
+            Cursor c = db.rawQuery("SELECT * FROM Datos WHERE ID_Categoria = ?",ID_arg);
+            c.moveToFirst();
+            //LLenamos la lista con la BD (Aqui habría que tener 3 listas para los 3 atributos)
+            TreeMap<String, String> dicc = new TreeMap<>();
+            boolean flag = true;
+            if (c.isAfterLast()) flag = false; //Aqui por si no hay recordatorios en la lista
+            while(flag){
+                dicc.put(c.getString(2), c.getString(3));
+                if (c.isLast()){
+                    flag = false;
+                }
+                c.moveToNext();
             }
-            c.moveToNext();
+            return dicc;
         }
-        return dicc;
+        return new TreeMap<>();
+
+
+
+
+
     }
 
 }

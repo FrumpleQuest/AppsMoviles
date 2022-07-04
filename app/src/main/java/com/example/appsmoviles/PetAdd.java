@@ -22,13 +22,16 @@ import java.util.Locale;
 
 
 public class PetAdd extends AppCompatActivity {
+
+    String categoria_actual;
+
     ImageButton recordatorio, Initial;
     final Calendar myCalendar = Calendar.getInstance();
     ExtendedFloatingActionButton boton_agregar_pet;
     TextInputLayout tv1,tv2,tv3,tv4,tv5,tv6,tv7;
     String text1,text2,text3,text4,text5,text6,text7;
     TextInputEditText editText;
-    //Se crean las variables
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

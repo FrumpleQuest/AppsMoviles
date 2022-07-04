@@ -52,6 +52,10 @@ public class estadisticas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estadisticas);
 
+        //Predefinimos la selección del spinner
+        Spinner spin = findViewById(R.id.spinner);
+        spin.setSelection(0);
+
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
@@ -208,16 +212,13 @@ public class estadisticas extends AppCompatActivity {
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
 
-        TextView tx =(TextView) findViewById(R.id.name_statistics_pet);
-        String nombre_mascota = tx.getText().toString();
+        String[] nombre_arr = {nombreMascota.getText().toString()};
 
-        String[] nombre_arr = {nombre_mascota};
         //Buscamos la ID_Categoria de la mascota
         Cursor c_pre = db.rawQuery("SELECT * FROM Mascotas where Nombre = ?",nombre_arr);
         c_pre.moveToFirst();
+
         String ID = c_pre.getString(0);
-
-
 
         String[] ID_arr = {ID};
         //Obtenemos categorias
@@ -225,7 +226,7 @@ public class estadisticas extends AppCompatActivity {
         c.moveToFirst();
 
         categorias = new ArrayList<>();
-        if (c.isAfterLast()) categorias.add("      ");
+        if (c.isAfterLast()) categorias.add("                      ");
         while(!c.isAfterLast()){
             categorias.add(c.getString(2));
             c.moveToNext();
@@ -238,7 +239,6 @@ public class estadisticas extends AppCompatActivity {
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("spintest",String.valueOf(position));
                 updateChart();
             }
             //Esta funcion no sirve de nada lol
@@ -285,7 +285,7 @@ public class estadisticas extends AppCompatActivity {
                         SQLiteHelper usdbh2 = new SQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
                         SQLiteDatabase db2 = usdbh2.getWritableDatabase();
 
-                        String[] arreglo = new String[] {"Mako"};
+                        String[] arreglo = new String[] {nombreMascota.getText().toString()};
                         Cursor c = db2.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
                         c.moveToFirst();
                         int ID = Integer.parseInt(c.getString(0));
@@ -313,8 +313,14 @@ public class estadisticas extends AppCompatActivity {
     }
 
     public void agregarDato(View view) {
-        Intent i = new Intent(estadisticas.this,addDato.class);
-        startActivity(i);
+        Spinner spin = findViewById(R.id.spinner);
+        String categoria = spin.getSelectedItem().toString();
+        Log.d("selecteditem",categoria);
+        Bundle bundle = new Bundle();
+        bundle.putString("categoria",categoria);
+        Intent statistics = new Intent(estadisticas.this,addDato.class);
+        statistics.putExtras(bundle);
+        startActivity(statistics);
     }
 
     public void verArchivosOnClick(View view) {
