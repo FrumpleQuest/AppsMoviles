@@ -277,8 +277,8 @@ public class estadisticas extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
                         final String categoria = text.getText().toString();
-                        final String Ejey = text.getText().toString();
-                        final String Ejex = text.getText().toString();
+                        final String Ejey = text2.getText().toString();
+                        final String Ejex = text3.getText().toString();
 
 
 
@@ -308,8 +308,6 @@ public class estadisticas extends AppCompatActivity {
                 AlertDialog dialog = popup.create();
                 dialog.setTitle("Añadir Categoria");
                 dialog.show();
-
-
     }
 
     public void agregarDato(View view) {

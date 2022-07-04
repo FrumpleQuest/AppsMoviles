@@ -1,6 +1,7 @@
 package com.example.appsmoviles;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -88,60 +90,55 @@ public class addDato extends Activity {
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                final EditText edittext = new EditText(addDato.this);
+                LinearLayout linear = new LinearLayout(addDato.this);
+                linear.setOrientation(LinearLayout.VERTICAL);
+                EditText text = new EditText(addDato.this);
+                EditText text2 = new EditText(addDato.this);
+
+                text.setHint("Valor del Eje X");
+                text2.setHint("Valor del Eje Y");
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(50,0,50,0);
+                text.setLayoutParams(layoutParams);
+                text2.setLayoutParams(layoutParams);
+                linear.addView(text);
+                linear.addView(text2);
+
                 AlertDialog.Builder popup = new AlertDialog.Builder(addDato.this);
-                popup.setView(edittext);
-                popup.setMessage("Agregar Dato").setCancelable(false);
-                popup.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                popup.setView(linear).setCancelable(true);
+                popup.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
-                        //Obtenemos nombre de mascota
-                        String nombre = edittext.getText().toString();
-                        //Abrimos BD
-                        SQLiteHelper usdbh = new SQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
-                        SQLiteDatabase db = usdbh.getWritableDatabase();
+                        final String fecha = text.getText().toString();
+                        final String valor = text2.getText().toString();
 
-                        //Revisamos si la mascota existe
-                        String[] arreglo = new String[] {nombre};
-                        Cursor c = db.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
+                        SQLiteHelper usdbh2 = new SQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
+                        SQLiteDatabase db2 = usdbh2.getWritableDatabase();
+
+                        String[] arreglo = new String[] {categoria_actual};
+                        Cursor c = db2.rawQuery("SELECT * FROM Categorias WHERE Nombre = ?",arreglo);
                         c.moveToFirst();
-                        if (c.isAfterLast()){
-                            Log.d("test_delete","La mascota no existe");
-                            dialog.dismiss();
-                            AlertDialog.Builder noexiste_builder = new AlertDialog.Builder(addDato.this);
-                            noexiste_builder.setMessage("La mascota no existe");
-                            AlertDialog noexiste = noexiste_builder.create();
-                            noexiste.show();
-                        }
 
-                        //Construimos la query
-                        String tabla = "Mascotas";
-                        String whereClause = "Nombre=?";
-                        String[] whereArgs = new String[] {nombre};
-                        //Ejecutamos la query
-                        db.delete(tabla, whereClause, whereArgs);
+                        String ID = c.getString(0).toString();
 
+                        ContentValues nuevo_dato = new ContentValues(4);
+                        nuevo_dato.put("ID_Categoria",ID);
+                        nuevo_dato.put("Fecha", fecha);
+                        nuevo_dato.put("Valor", valor);
+                        db2.insert("Datos",null, nuevo_dato);
 
-                        Log.d("test_delete", nombre);
-                        dialog.dismiss();
-
-                        CharSequence texto = (CharSequence) nombre + " Eliminade";
-                        Toast.makeText(addDato.this,texto, Toast.LENGTH_LONG).show();
-                        Intent intento = new Intent( addDato.this, MainActivity.class);
-                        startActivity(intento);
+                        crearTabla();
                     }
                 });
-                popup.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                popup.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        dialog.dismiss();
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
                     }
                 });
                 AlertDialog dialog = popup.create();
-                dialog.setTitle("Eliminar Mascota");
+                dialog.setTitle("Añadir Dato");
                 dialog.show();
-                */
             }
         });
     }
@@ -161,7 +158,7 @@ public class addDato extends Activity {
     private void crearTabla() {
         //Obtenemos tabla
         TableLayout tabla = findViewById(R.id.tabla);
-
+        tabla.removeAllViews();
         //Obtenemos datos de BD
         TreeMap<String,String> tree = getSortedTreeMap();
 
