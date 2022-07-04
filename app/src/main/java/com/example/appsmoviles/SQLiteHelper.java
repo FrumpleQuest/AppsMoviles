@@ -130,13 +130,13 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
         ContentValues dato21 = new ContentValues(2);
         dato.put("ID_Categoria", 2);
-        dato.put("Fecha","2022/01/01");
+        dato.put("Fecha","2020/01/01");
         dato.put("Valor", 5);
         db.insert("Datos",null,dato);
 
         ContentValues dato22 = new ContentValues(2);
         dato.put("ID_Categoria", 2);
-        dato.put("Fecha","2022/01/01");
+        dato.put("Fecha","2021/01/01");
         dato.put("Valor", 2);
         db.insert("Datos",null,dato);
 

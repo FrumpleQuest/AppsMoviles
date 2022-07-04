@@ -23,100 +23,32 @@ tools:context=".addDato">
         android:gravity="center"
         />
 </com.google.android.material.appbar.AppBarLayout>
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="1">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ListView
-            android:id="@+id/rv1"
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:id="@+id/tabla"
+            android:stretchColumns="*">
+        </TableLayout>
     </androidx.cardview.widget.CardView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_button_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_gravity="end|bottom"
-        app:srcCompat="@drawable/plus_icon_white"
-        app:backgroundTint="@color/teal_200"
-        android:contentDescription="TODO" />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:padding="5dp"
-        android:layout_margin="20dp"
-        android:background="@drawable/corner_radius">
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button_2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#5b1a04"
-                android:animateLayoutChanges="true"
-                android:text="Mako - Peso"
-                android:fontFamily="@font/quicksand_bold"
-                android:textSize="25sp"
-                android:gravity="left"
-                />
+            android:layout_margin="16dp"
+            android:layout_gravity="end|bottom"
+            app:srcCompat="@drawable/plus_icon_white"
+            app:backgroundTint="@color/teal_200"
+            android:contentDescription="TODO" />
+    </FrameLayout>
 
-            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/simpleTableLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:stretchColumns="1"> <!-- stretch the second column of the layout-->
-
-                <!-- first row of the table layout-->
-                <TableRow
-
-                    android:id="@+id/firstRow"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-
-                    <!-- first element of the row-->
-                    <TextView
-
-                        android:id="@+id/fecha"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#b0b0b0"
-                        android:padding="18dip"
-                        android:text="Fecha"
-                        android:textColor="#000"
-                        android:textSize="12dp" />
-
-                    <TextView
-
-                        android:id="@+id/simpleTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#b0b0b0"
-                        android:padding="18dip"
-                        android:text="Peso [KG]"
-                        android:textColor="#000"
-                        android:textSize="14dp" />
-
-                </TableRow>
-            </TableLayout>
-
-        </LinearLayout>
-
-
-
-
-
-
-
-    </ScrollView>
-</FrameLayout>
-<LinearLayout
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ff98ba"
