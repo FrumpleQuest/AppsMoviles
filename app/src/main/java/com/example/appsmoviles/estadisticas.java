@@ -134,19 +134,29 @@ public class estadisticas extends AppCompatActivity {
         Cursor c = db.rawQuery("SELECT * FROM Categorias WHERE Nombre = ?",arr);
         c.moveToFirst();
 
-        String ID_Categoria = c.getString(0);
-        String[] arr2 = {ID_Categoria};
-        Cursor c2 = db.rawQuery("SELECT * FROM Datos WHERE ID_Categoria = ?",arr2);
-        c2.moveToFirst();
-
         //LLenamos los valores del grafico
+
+        //flag true significa que hay una categoria con ese nombre
+        boolean flag = !c.isAfterLast();
         ArrayList<Entry> valores = new ArrayList<Entry>();
-        int d = 0;
-        while(!c2.isAfterLast()){
-            String fecha = c2.getString(2); //Por ahora ignorara la fecha, luego debera transformarla
-            valores.add(new Entry(d++, Float.parseFloat(c2.getString(3))));
-            c2.moveToNext();
+        if(flag){
+            String ID_Categoria = c.getString(0);
+            String[] arr2 = {ID_Categoria};
+            Cursor c2 = db.rawQuery("SELECT * FROM Datos WHERE ID_Categoria = ?",arr2);
+            c2.moveToFirst();
+            if (c2.isAfterLast()){
+                flag = false; //No hay datos
+            }
+            else{
+                int d = 0;
+                while(!c2.isAfterLast()){
+                    String fecha = c2.getString(2); //Por ahora ignorara la fecha, luego debera transformarla
+                    valores.add(new Entry(d++, Float.parseFloat(c2.getString(3))));
+                    c2.moveToNext();
+                }
+            }
         }
+
         //Construimos la estetica del grafico
         LineChart grafico = findViewById(R.id.line_chart);
         grafico.setNoDataText("No existen datos disponibles");
@@ -167,38 +177,55 @@ public class estadisticas extends AppCompatActivity {
         desc.setText("");
         grafico.setDescription(desc);
 
-        //Construimos la estetica de los datos
-        LineDataSet data = new LineDataSet(valores,categoria);
-        data.setLineWidth(5);
-        data.setColor(Color.CYAN);
-        data.setCircleHoleColor(Color.CYAN);
-        data.setCircleColor(Color.BLACK);
-        data.setCircleRadius(4);
-        data.setCircleHoleRadius(1.5f);
-
         //Creamos y mostramos el grafico
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        dataSets.add(data);
 
-        LineData ldata = new LineData(dataSets);
-        ldata.setValueTextColor(R.color.teal_200);
-        ldata.setValueTextSize(12);
-        grafico.setData(ldata);
+        //Construimos la estetica de los datos
+        if(flag){
+            LineDataSet data = new LineDataSet(valores,categoria);
+            data.setLineWidth(5);
+            data.setColor(Color.CYAN);
+            data.setCircleHoleColor(Color.CYAN);
+            data.setCircleColor(Color.BLACK);
+            data.setCircleRadius(4);
+            data.setCircleHoleRadius(1.5f);
+            dataSets.add(data);
+            LineData ldata = new LineData(dataSets);
+            ldata.setValueTextColor(R.color.teal_200);
+            ldata.setValueTextSize(12);
+            grafico.setData(ldata);
+        }
+        else{
+            grafico.setData(null);
+        }
         grafico.invalidate();
 
     }
 
-
     public void updateCategorias(){
-        categorias = new ArrayList<>();
 
         //Abrimos la base de datos 'DBUsuarios' en modo lectura-escritura
         SQLiteHelper usdbh = new SQLiteHelper(this, "DBUsuarios", null, 1);
         SQLiteDatabase db = usdbh.getWritableDatabase();
 
+        TextView tx =(TextView) findViewById(R.id.name_statistics_pet);
+        String nombre_mascota = tx.getText().toString();
+
+        String[] nombre_arr = {nombre_mascota};
+        //Buscamos la ID_Categoria de la mascota
+        Cursor c_pre = db.rawQuery("SELECT * FROM Mascotas where Nombre = ?",nombre_arr);
+        c_pre.moveToFirst();
+        String ID = c_pre.getString(0);
+
+
+
+        String[] ID_arr = {ID};
         //Obtenemos categorias
-        Cursor c = db.rawQuery("SELECT * FROM Categorias",null);
+        Cursor c = db.rawQuery("SELECT * FROM Categorias where ID_Mascota = ?",ID_arr);
         c.moveToFirst();
+
+        categorias = new ArrayList<>();
+        if (c.isAfterLast()) categorias.add("      ");
         while(!c.isAfterLast()){
             categorias.add(c.getString(2));
             c.moveToNext();
@@ -212,6 +239,7 @@ public class estadisticas extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("spintest",String.valueOf(position));
+                updateChart();
             }
             //Esta funcion no sirve de nada lol
             @Override
@@ -220,12 +248,6 @@ public class estadisticas extends AppCompatActivity {
             }
         });
         spin.setAdapter(adaptador);
-    }
-
-
-    public void verArchivosOnClick(View view) {
-        Intent i = new Intent( estadisticas.this, archivos.class);
-        startActivity(i);
     }
 
     public void addCategoria(View view) {
@@ -292,6 +314,11 @@ public class estadisticas extends AppCompatActivity {
 
     public void agregarDato(View view) {
         Intent i = new Intent(estadisticas.this,addDato.class);
+        startActivity(i);
+    }
+
+    public void verArchivosOnClick(View view) {
+        Intent i = new Intent( estadisticas.this, archivos.class);
         startActivity(i);
     }
 }

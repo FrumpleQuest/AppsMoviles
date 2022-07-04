@@ -98,6 +98,13 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         makoPeso.put("EjeY", "Peso [Kg]");
         db.insert("Categorias",null,makoPeso);
 
+        ContentValues makoDestruccion = new ContentValues(4);
+        makoDestruccion.put("ID_Mascota", 1);
+        makoDestruccion.put("Nombre", "Muebles Destruidos");
+        makoDestruccion.put("EjeX", "Fecha");
+        makoDestruccion.put("EjeY", "Cantidad");
+        db.insert("Categorias",null,makoDestruccion);
+
         ContentValues archivo = new ContentValues(2);
         archivo.put("ID_Mascota", 1);
         archivo.put("Nombre", "Nombre_Archivo.jepeg");
@@ -119,6 +126,24 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         dato.put("ID_Categoria", 1);
         dato.put("Fecha","2022/01/01");
         dato.put("Valor", 5.4);
+        db.insert("Datos",null,dato);
+
+        ContentValues dato21 = new ContentValues(2);
+        dato.put("ID_Categoria", 2);
+        dato.put("Fecha","2022/01/01");
+        dato.put("Valor", 5);
+        db.insert("Datos",null,dato);
+
+        ContentValues dato22 = new ContentValues(2);
+        dato.put("ID_Categoria", 2);
+        dato.put("Fecha","2022/01/01");
+        dato.put("Valor", 2);
+        db.insert("Datos",null,dato);
+
+        ContentValues dato23 = new ContentValues(2);
+        dato.put("ID_Categoria", 2);
+        dato.put("Fecha","2022/01/01");
+        dato.put("Valor", 0);
         db.insert("Datos",null,dato);
     }
 
