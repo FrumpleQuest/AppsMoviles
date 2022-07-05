@@ -23,8 +23,6 @@ import java.util.Locale;
 
 public class PetAdd extends AppCompatActivity {
 
-    String categoria_actual;
-
     ImageButton recordatorio, Initial;
     final Calendar myCalendar = Calendar.getInstance();
     ExtendedFloatingActionButton boton_agregar_pet;

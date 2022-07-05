@@ -1,6 +1,7 @@
 package com.example.appsmoviles;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -29,10 +31,13 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -90,13 +95,33 @@ public class addDato extends Activity {
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                final Calendar myCalendar = Calendar.getInstance();
                 LinearLayout linear = new LinearLayout(addDato.this);
                 linear.setOrientation(LinearLayout.VERTICAL);
                 EditText text = new EditText(addDato.this);
                 EditText text2 = new EditText(addDato.this);
 
-                text.setHint("Valor del Eje X");
-                text2.setHint("Valor del Eje Y");
+                DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        myCalendar.set(Calendar.YEAR, year);
+                        myCalendar.set(Calendar.MONTH, month);
+                        myCalendar.set(Calendar.DAY_OF_MONTH, day);
+                        updateLabel(text, myCalendar);
+                    }
+                };
+                text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        new DatePickerDialog(addDato.this, date, myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+                    }
+                });
+
+                text.setHint("Fecha");
+                text2.setHint("Valor");
                 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 layoutParams.setMargins(50,0,50,0);
                 text.setLayoutParams(layoutParams);
@@ -153,6 +178,12 @@ public class addDato extends Activity {
         tx.setTextSize(16);
         tx.setBackgroundResource(R.drawable.borde);
         return tx;
+    }
+
+    private void updateLabel(EditText editText, Calendar myCalendar){
+        String myFormat= "dd-MM-yy";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
+        editText.setText(dateFormat.format(myCalendar.getTime()));
     }
 
     private void crearTabla() {

@@ -1,5 +1,6 @@
 package com.example.appsmoviles;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -40,6 +42,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class estadisticas extends AppCompatActivity {
@@ -251,63 +254,54 @@ public class estadisticas extends AppCompatActivity {
     }
 
     public void addCategoria(View view) {
-                LinearLayout linear = new LinearLayout(this);
-                linear.setOrientation(LinearLayout.VERTICAL);
-                EditText text = new EditText(this);
-                EditText text2 = new EditText(this);
-                EditText text3 = new EditText(this);
+        LinearLayout linear = new LinearLayout(this);
+        linear.setOrientation(LinearLayout.VERTICAL);
+        EditText text = new EditText(this);
+        EditText text2 = new EditText(this);
 
+        text.setHint("Nombre de Categoría");
+        text2.setHint("Valores del Eje Y");
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(50,0,50,0);
+        text.setLayoutParams(layoutParams);
+        text2.setLayoutParams(layoutParams);
+        linear.addView(text);
+        linear.addView(text2);
 
-                text.setHint("Nombre de Categoría");
-                text2.setHint("Nombre del Eje X");
-                text3.setHint("Nombre del Eje Y");
-                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                layoutParams.setMargins(50,0,50,0);
-                text.setLayoutParams(layoutParams);
-                text2.setLayoutParams(layoutParams);
-                text3.setLayoutParams(layoutParams);
-                linear.addView(text);
-                linear.addView(text2);
-                linear.addView(text3);
+        AlertDialog.Builder popup = new AlertDialog.Builder(estadisticas.this);
+        popup.setView(linear).setCancelable(true);
+        popup.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                final String categoria = text.getText().toString();
+                final String Ejey = text2.getText().toString();
 
+                SQLiteHelper usdbh2 = new SQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
+                SQLiteDatabase db2 = usdbh2.getWritableDatabase();
 
-                AlertDialog.Builder popup = new AlertDialog.Builder(estadisticas.this);
-                popup.setView(linear).setCancelable(true);
-                popup.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        final String categoria = text.getText().toString();
-                        final String Ejey = text2.getText().toString();
-                        final String Ejex = text3.getText().toString();
+                String[] arreglo = new String[] {nombreMascota.getText().toString()};
+                Cursor c = db2.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
+                c.moveToFirst();
+                int ID = Integer.parseInt(c.getString(0));
+                ContentValues nueva_categoria = new ContentValues(4);
+                nueva_categoria.put("ID_Mascota",ID);
+                nueva_categoria.put("Nombre", categoria);
+                nueva_categoria.put("EjeX", "Fecha");
+                nueva_categoria.put("EjeY",Ejey);
+                db2.insert("Categorias",null, nueva_categoria);
 
-
-
-                        SQLiteHelper usdbh2 = new SQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
-                        SQLiteDatabase db2 = usdbh2.getWritableDatabase();
-
-                        String[] arreglo = new String[] {nombreMascota.getText().toString()};
-                        Cursor c = db2.rawQuery("SELECT * FROM Mascotas WHERE Nombre = ?",arreglo);
-                        c.moveToFirst();
-                        int ID = Integer.parseInt(c.getString(0));
-                        ContentValues nueva_categoria = new ContentValues(4);
-                        nueva_categoria.put("ID_Mascota",ID);
-                        nueva_categoria.put("Nombre", categoria);
-                        nueva_categoria.put("EjeX", Ejex);
-                        nueva_categoria.put("EjeY",Ejey);
-                        db2.insert("Categorias",null, nueva_categoria);
-
-                        updateCategorias();
-                    }
-                });
-                popup.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-                AlertDialog dialog = popup.create();
-                dialog.setTitle("Añadir Categoria");
-                dialog.show();
+                updateCategorias();
+            }
+        });
+        popup.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        AlertDialog dialog = popup.create();
+        dialog.setTitle("Añadir Categoria");
+        dialog.show();
     }
 
     public void agregarDato(View view) {
