@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -20,6 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class archivos extends AppCompatActivity {
+    ImageButton recordatorio,configuracion,boton_main;
     ListView listArchivos;
     private static final int TAKE_PICTURE = 0;
     FloatingActionButton btnCam;
@@ -76,6 +78,35 @@ public class archivos extends AppCompatActivity {
                 }catch(Exception e){
                     e.printStackTrace();
                 }
+            }
+        });
+//-------------------------------------------------------------------------------------------
+        recordatorio= (ImageButton) findViewById(R.id.recordatorio);
+        recordatorio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //recordatorio.setImageResource(R.drawable.calendarselected);
+                Intent i = new Intent( archivos.this, recordatorios.class);
+                startActivity(i);
+            }
+        });
+
+        configuracion= (ImageButton) findViewById(R.id.configuracion);
+        configuracion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent( archivos.this, configuracion.class);
+                startActivity(i);
+            }
+        });
+
+        boton_main= (ImageButton) findViewById(R.id.main_boton);
+        boton_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Aqui no se hace nada pq es el main
+                Intent i = new Intent(archivos.this, MainActivity.class);
+                startActivity(i);
             }
         });
     }

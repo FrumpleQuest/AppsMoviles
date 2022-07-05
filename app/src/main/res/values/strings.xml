@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppsMoviles</string>
+    <string name="app_name">PetStats</string>
     <string name="recordatorios">Recordatorios</string>
     <string name="nombre">Nombre</string>
     <string name="ingrese_el_nombre_de_la_mascota">Ingrese el nombre de la mascota</string>

@@ -91,6 +91,6 @@ tools:context=".MainActivity">
         android:scaleType="fitCenter"
         android:layout_weight="1"
         android:background="#ff98ba"
-        android:src="@drawable/setting"/>
+        android:src="@drawable/ic_baseline_settings_24"/>
 </LinearLayout>
 </LinearLayout>

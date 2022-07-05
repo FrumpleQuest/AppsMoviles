@@ -65,7 +65,7 @@
             android:scaleType="fitCenter"
             android:layout_weight="1"
             android:background="#ff98ba"
-            android:src="@drawable/iconopatita"/>
+            android:src="@drawable/huella"/>
         <ImageButton
             android:id="@+id/configuracion"
             android:layout_width="0dp"

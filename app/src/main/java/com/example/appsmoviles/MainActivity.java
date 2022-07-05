@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //recordatorio.setImageResource(R.drawable.calendarselected);
-                Intent i = new Intent( MainActivity.this, archivos.class);
+                Intent i = new Intent( MainActivity.this, recordatorios.class);
                 startActivity(i);
             }
         });
