@@ -5,34 +5,61 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.media.VolumeShaper;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Collections;
 
 public class archivos extends AppCompatActivity {
-
+    ListView listArchivos;
     private static final int TAKE_PICTURE = 0;
     FloatingActionButton btnCam;
     //Button btnCam;
+
+    ImageView imageView;
+
+    boolean isImageFitToScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_archivos);
+
+        listArchivos = (ListView) findViewById(R.id.iv1);
+        String[] nombre = new String[]{
+                "Gatito 1",
+                "Gatito 2"
+        };
+        Integer[] imagenes={
+                R.drawable.makoimg,
+                R.drawable.makoimg
+        };
+
+        AdapterArchive adaptadorarchivos = new AdapterArchive(this, nombre, imagenes);
+        listArchivos.setAdapter(adaptadorarchivos);
+
+
+
+
+            //imageView = (ImageView) findViewById(R.id.img_archivos);
+        listArchivos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(archivos.this ,Fullscreen.class );
+
+            }
+        });
+
+
 
         btnCam = (FloatingActionButton) findViewById(R.id.btn_foto_archivo);
         //btnCam = (Button) findViewById(R.id.btn_foto_archivo);

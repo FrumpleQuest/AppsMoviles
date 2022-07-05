@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.appsmoviles">
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,32 +16,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppsMoviles">
         <activity
+            android:name=".Fullscreen"
+            android:exported="false" />
+        <activity
             android:name=".archivos"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".configuracion"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".recordatorios"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PetAdd"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PetAdd"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".RecordatorioAdd"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RecordatorioAdd"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".EditPet"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditPet"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".estadisticas"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".estadisticas"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".addDato"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".addDato"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

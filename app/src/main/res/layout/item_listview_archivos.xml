@@ -23,13 +23,15 @@
             <ImageView
                 android:id="@+id/img_archivos"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:layout_weight="2"/>
             <TextView
+                android:id="@+id/txtnombre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="NOmbre"
+                android:textSize="20sp"
+                android:text="Nombre"
                 />
 
 
