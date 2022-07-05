@@ -9,19 +9,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Fullscreen extends AppCompatActivity {
 
+    ImageView imageview;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
 
-        ImageView fullscreenimageview = (ImageView) findViewById(R.id.imageViewFull);
+        imageview = (ImageView) findViewById(R.id.imageViewFull);
 
         Intent callingActivityIntent = getIntent();
-        if(callingActivityIntent!=null){
-            Uri imageUri = callingActivityIntent.getData();
-            if(imageUri!=null && fullscreenimageview != null){
-                String a ="hola";
-            }
+        if(callingActivityIntent.getExtras()!=null){
+            Integer imagen = callingActivityIntent.getIntExtra("imagenes",0);
+            imageview.setImageResource(imagen);
         }
 
     }

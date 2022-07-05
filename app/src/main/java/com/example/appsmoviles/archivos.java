@@ -55,7 +55,9 @@ public class archivos extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(archivos.this ,Fullscreen.class );
-
+                Integer selectedImage = imagenes[position];
+                i.putExtra("imagenes", selectedImage);
+                startActivity(i);
             }
         });
 
